@@ -1,0 +1,36 @@
+
+.sidebar{
+// background:    $sidebar-dark-bg;
+background:    #2a3042;
+// background:#fff;
+ bottom:0;
+ box-shadow:0 .75rem 1.5rem rgba(18,38,63,.03);
+ margin-top:0;
+ padding-top:70px;
+ position:fixed;
+ top:0;
+ left: 0;
+ width:250px;
+ z-index:1001;
+ color: #a6b0cf;
+ cursor: pointer;
+ 
+    ul{
+        display: flex;
+        flex-direction: column;
+    }
+    li{
+        padding: 12px 20px;
+        &:hover{
+             color: aliceblue;
+             transition: color 0.5s;
+        }
+    }
+    .menu_title {
+        font-size: 11px;
+    }
+    .menu_content{
+        font-size: 13px;
+    
+    }
+}
