@@ -1,8 +1,6 @@
 
 .sidebar{
-// background:    $sidebar-dark-bg;
 background:    #2a3042;
-// background:#fff;
  bottom:0;
  box-shadow:0 .75rem 1.5rem rgba(18,38,63,.03);
  margin-top:0;
@@ -12,25 +10,40 @@ background:    #2a3042;
  left: 0;
  width:250px;
  z-index:1001;
- color: #a6b0cf;
  cursor: pointer;
  
     ul{
         display: flex;
         flex-direction: column;
+        list-style: none;
     }
     li{
-        padding: 12px 20px;
-        &:hover{
+        span:hover{
              color: aliceblue;
              transition: color 0.5s;
         }
     }
     .menu_title {
         font-size: 11px;
+        color: #6a7187;
+        padding: 12px 20px;
     }
     .menu_content{
         font-size: 13px;
-    
+        color: #a6b0cf;
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px;
+
+        span,a{
+            padding: .625rem 1.5rem;
+            width: 100%;
+        }
+
+        ul{
+            li {
+                padding: 8px 20px;
+            }
+        }
     }
 }
