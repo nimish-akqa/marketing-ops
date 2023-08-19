@@ -89,7 +89,7 @@ body{
   background-color: #f8f8fb;
 }
 
-// body {
+body {
 //   color: rgb(var(--foreground-rgb));
 //   background: linear-gradient(
 //       to bottom,
@@ -97,7 +97,7 @@ body{
 //       rgb(var(--background-end-rgb))
 //     )
 //     rgb(var(--background-start-rgb));
-// }
+}
 
 a {
   color: inherit;
@@ -111,7 +111,6 @@ a {
 // }
 
 .mainContent{
-  position: fixed;
-  left: 250px;
-  padding: 94px 18px 60px;
+  margin-left: 250px;
+  padding: 70px 0px;
 }
