@@ -1,0 +1,29 @@
+.pageFooter {
+  background-color: #f2f2f5;
+  bottom: 0;
+  color: #74788d;
+  height: 60px;
+  left: 250px;
+  padding: 20px 18px;
+  position: absolute;
+  right: 0;
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+
+    .copyright {
+      flex: 0 0 auto;
+      width: 50%;
+    }
+
+    .description {
+      flex: 0 0 auto;
+      width: 50%;
+      .text {
+        text-align: right !important;
+        display: block !important;
+      }
+    }
+  }
+}
