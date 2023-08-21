@@ -6,26 +6,26 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'PMS',
-  description: 'Marketting Ops PMS',
-}
+  title: "PMS",
+  description: "Marketting Ops PMS",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <Header></Header>
-      <Sidebar></Sidebar>
+        <Header></Header>
+        <Sidebar></Sidebar>
         {children}
       <Footer></Footer>
         </body>
     </html>
-  )
+  );
 }

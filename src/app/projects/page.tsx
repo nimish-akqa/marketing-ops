@@ -1,8 +1,13 @@
-import React from "react";
+// "use client";
+
+import React, { useState } from "react";
 import "./projects.scss";
 import Image from "next/image";
 import { projects } from "@/tempJson/projects";
 import { BsThreeDots, BsPlusLg } from "react-icons/bs";
+import Modal from "@/components/Modal";
+import ProjectForm from "@/components/ProjectForm";
+import Link from "next/link";
 
 const convertDate = (date: string) => {
   return new Date(date).toLocaleString("en-US", {
@@ -21,10 +26,10 @@ const page = () => {
             <h4>PROJECTS LIST</h4>
           </div>
           <div>
-            <button className="createButton">
+            <div className="createButton">
               <BsPlusLg />
-              Create Project
-            </button>
+              <Link href={`/create-project`}>Create Project</Link>
+            </div>
           </div>
         </div>
         <div className="section">
@@ -41,7 +46,7 @@ const page = () => {
             </thead>
             <tbody>
               {projects.map((project) => (
-                <tr>
+                <tr key={project.id}>
                   <td>
                     <span>{project.name}</span>
                     <p>{project.metadesc}</p>
@@ -49,7 +54,6 @@ const page = () => {
                   <td>{convertDate(project.startDate)}</td>
                   <td>{convertDate(project.endDate)}</td>
                   <td>
-                    {" "}
                     <span
                       className={`projectStatus ${
                         project.status === "Completed"
@@ -65,7 +69,7 @@ const page = () => {
                   <td>
                     <div className="userGroup">
                       {project.teamMembers.map((teamMember) => (
-                        <div className="userAvatar">
+                        <div className="userAvatar" key={teamMember.userId}>
                           <Image
                             src={`https://api.multiavatar.com/${teamMember.userId}.svg`}
                             width={32}

@@ -27,7 +27,7 @@ const Sidebar = () => {
               <Link href="/projects/project-overview">Project Overview</Link>
             </li>
             <li>
-              <Link href="/projects/create-project">Create Project</Link>
+              <Link href="/create-project">Create Project</Link>
             </li>
           </ul>
         </li>

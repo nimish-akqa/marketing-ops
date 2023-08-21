@@ -1,0 +1,50 @@
+export const agents = [
+    {
+      agentId: 1,
+      name: "John",
+      email: "john@email.com",
+      agentType: "Human",
+      skills: ["Php","Java","Ruby"],
+      projects: 2,
+    },
+    {
+        agentId: 2,
+        name: "Greg",
+        email: "greg@email.com",
+        agentType: "Human",
+        skills: ["Html","Css","Javascript","Reactjs"],
+        projects: 4,
+      },
+      {
+        agentId: 3,
+        name: "Alex",
+        email: "alex@email.com",
+        agentType: "Human",
+        skills: ["Photoshop","Illustrator"],
+        projects: 5,
+      },
+      {
+        agentId: 4,
+        name: "Dave",
+        email: "dave@email.com",
+        agentType: "Human",
+        skills: ["Java","Ruby"],
+        projects: 1,
+      },
+      {
+        agentId: 5,
+        name: "Amanda",
+        email: "amanda@email.com",
+        agentType: "Human",
+        skills: ["Java","Ruby","Css"],
+        projects: 4,
+      },
+      {
+        id: 6,
+        name: "Frank",
+        email: "frank@email.com",
+        agentType: "Human",
+        skills: ["Reactjs","Javascript","Java"],
+        projects: 0,
+      }
+  ];

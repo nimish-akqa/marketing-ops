@@ -1,9 +1,4 @@
 .pageContent {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 0px 18px;
-
   .pageTitle {
     padding: 20px 0px;
   }
@@ -52,11 +47,6 @@
         }
       }
     }
-  }
-  .sectionHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
   .createButton {
     background-color: #556ee6;

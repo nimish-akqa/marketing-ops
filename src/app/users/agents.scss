@@ -1,0 +1,13 @@
+@import "../projects/projects.scss";
+
+.skillGroup {
+  display: flex;
+  gap: 5px;
+  .skills {
+    color: #556ee6;
+    background-color: #556ee62e;
+    border-radius: 0.25rem;
+    padding: 0.1rem 0.3rem;
+    font-size: 75%;
+  }
+}
