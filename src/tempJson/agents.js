@@ -40,7 +40,7 @@ export const agents = [
         projects: 4,
       },
       {
-        id: 6,
+        agentId: 6,
         name: "Frank",
         email: "frank@email.com",
         agentType: "Human",

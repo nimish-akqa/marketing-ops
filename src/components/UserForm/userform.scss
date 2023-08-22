@@ -1,0 +1,16 @@
+@mixin flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fileDropzone {
+    border: 2px dashed #eff2f7;
+    border-radius: 6px;
+    min-height: 230px;
+    @include flex;
+    .fileUploadText {
+        @include flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}

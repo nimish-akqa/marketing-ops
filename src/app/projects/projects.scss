@@ -1,80 +1,66 @@
-.pageContent {
-  .pageTitle {
-    padding: 20px 0px;
-  }
-  .section {
-    table {
-      padding: 10px 0px;
-      border-spacing: 0px 12px;
-      width: 100%;
-      tr {
-        font-size: 14px;
-        background-color: #fff;
-        td,
-        th {
-          padding: 0.75rem;
-          text-align: inherit;
-          span {
-            font-weight: 500;
-          }
-          .projectStatus {
-            color: #fff;
-            border-radius: 0.25rem;
-            // padding: .25rem .4rem;
-            padding: 0.1rem 0.3rem;
-            font-size: 75%;
-          }
-        }
-        p {
-          font-size: 13px;
-          color: #74788d;
-        }
-        .userGroup {
-          display: flex;
-          flex-wrap: wrap;
-        }
-        .userAvatar {
-          margin: -6px;
-          border: 2px solid #fff;
-          border-radius: 50%;
-          cursor: pointer;
-          &:hover {
-            transform: translateY(-2px);
-          }
-        }
-        .projectOptions i {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-  .createButton {
-    background-color: #556ee6;
-    border: 1px solid rgba(27, 31, 35, 0.15);
-    border-radius: 6px;
-    color: #fff;
-    cursor: pointer;
-    padding: 6px 10px;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+@import '../../app/mixins';
 
-    &:hover {
-      background-color: #4458b8;
-      text-decoration: none;
-      transition-duration: 0.1s;
+.pageContent {
+    .pageTitle {
+        padding: 20px 0px;
     }
-  }
+    .section {
+        table {
+            padding: 10px 0px;
+            border-spacing: 0px 12px;
+            width: 100%;
+            tr {
+                font-size: 14px;
+                background-color: #fff;
+                td,
+                th {
+                    padding: 0.75rem;
+                    text-align: inherit;
+                    span {
+                        font-weight: 500;
+                    }
+                    .projectStatus {
+                        color: #fff;
+                        border-radius: 0.25rem;
+                        // padding: .25rem .4rem;
+                        padding: 0.1rem 0.3rem;
+                        font-size: 75%;
+                    }
+                }
+                p {
+                    font-size: 13px;
+                    color: #74788d;
+                }
+                .userGroup {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                .userAvatar {
+                    margin: -6px;
+                    border: 2px solid #fff;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    &:hover {
+                        transform: translateY(-2px);
+                    }
+                }
+                .projectOptions i {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .createButton {
+        @include button;
+    }
 }
 
 .success {
-  background-color: #34c38f;
+    background-color: #34c38f;
 }
 .warning {
-  background-color: #f1b44c;
+    background-color: #f1b44c;
 }
 .danger {
-  background-color: #f46a6a;
+    background-color: #f46a6a;
 }
