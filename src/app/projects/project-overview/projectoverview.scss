@@ -1,6 +1,6 @@
 .mainContent {
     .page-content {
-        padding: 94px 18px 60px;
+        padding: 50px 18px 60px;
 
         .page-title {
             padding-bottom: 24px;
@@ -27,6 +27,36 @@
                 max-width: 100%;
                 padding-left: calc(var(--bs-gutter-x) * 0.5);
                 padding-right: calc(var(--bs-gutter-x) * 0.5);
+
+                .projectdetails {
+                    font-size: 15px !important;
+                    margin-top: 1.5rem !important;
+                }
+
+                .dflex {
+                    display: flex !important;
+                    .avatar-sm {
+                        height: 3rem;
+                        width: 3rem !important;
+                        margin-right: 1.5rem !important;
+                    }
+
+                    .uidetails {
+                        display: flex !important;
+                        flex-direction: column;
+                        h5 {
+                            font-size: 15px !important;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                        p {
+                            --bs-text-opacity: 1;
+                            color: #74788d !important;
+                            color: var(--bs-gray-600) !important;
+                        }
+                    }
+                }
             }
 
             .col-lg-4 {
@@ -75,11 +105,6 @@
                 color: var(--bs-card-color);
                 flex: 1 1 auto;
                 padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-            }
-        }
-
-        .files {
-            .card-title {
             }
         }
     }
