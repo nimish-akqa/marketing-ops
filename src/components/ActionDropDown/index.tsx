@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { BiSolidPencil, BiSolidTrash } from 'react-icons/bi';
 import { BsThreeDots } from 'react-icons/bs';
 
@@ -11,17 +11,31 @@ type Props = {
 
 const ActionDropDown = (props: Props) => {
     const [openDropdownId, setOpenDropdownId] = useState<number | null>(null);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-    const toggleDropdown = (projectId: number) => {
-        if (openDropdownId === projectId) {
+    const handleClick = (projectId: number) => {
+        setOpenDropdownId(projectId);
+    };
+
+    const handleDocumentClick = (event: MouseEvent) => {
+        if (
+            dropdownRef.current &&
+            !dropdownRef.current.contains(event.target as Node)
+        ) {
             setOpenDropdownId(null);
-        } else {
-            setOpenDropdownId(projectId);
         }
     };
+
+    useEffect(() => {
+        document.addEventListener('click', handleDocumentClick);
+        return () => {
+            document.removeEventListener('click', handleDocumentClick);
+        };
+    }, []);
+
     return (
-        <div className={props.class}>
-            <Link href={'#'} onClick={() => toggleDropdown(props.optionId)}>
+        <div className={props.class} ref={dropdownRef}>
+            <Link href={'#'} onClick={() => handleClick(props.optionId)}>
                 <i>
                     <BsThreeDots />
                 </i>
