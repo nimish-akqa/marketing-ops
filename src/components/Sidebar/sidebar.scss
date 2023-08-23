@@ -12,12 +12,10 @@
     cursor: pointer;
 
     ul {
-        display: flex;
-        flex-direction: column;
         list-style: none;
     }
     li {
-        span:hover {
+        div:hover {
             color: aliceblue;
             transition: color 0.5s;
         }
@@ -38,10 +36,20 @@
             padding: 0.625rem 1.5rem;
             width: 100%;
         }
-        span {
+        div {
             @extend a;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+        span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            a {
+                padding: 0px;
+            }
         }
 
         ul {
@@ -49,5 +57,25 @@
                 padding: 8px 20px;
             }
         }
+        .projectsMenu,
+        .usersMenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .show {
+            max-height: 200px;
+            transition: max-height 0.3s ease;
+        }
     }
+    .menuArrow {
+        transition: transform 0.3s ease;
+    }
+    .menuActive .menuArrow {
+        transform: rotate(-180deg);
+        transition: transform 0.3s ease; /* Add transition for smooth rotation */
+    }
+}
+.active {
+    color: #fff;
 }

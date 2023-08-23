@@ -7,10 +7,7 @@ const Footer = () => {
             <div className="row">
                 <div className="copyright">2023 © Skote.</div>
                 <div className="description">
-                    <div className="text">
-                        {' '}
-                        Design & Develop by Themesbrand{' '}
-                    </div>
+                    <div className="text"></div>
                 </div>
             </div>
         </footer>

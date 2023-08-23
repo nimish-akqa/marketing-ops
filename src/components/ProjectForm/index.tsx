@@ -9,7 +9,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 //   onSubmit: () => void;
 // }
 
-// const ProjectForm: React.FC<MyFormProps> = (/*{ onSubmit }*/) => {
 const ProjectForm: React.FC = (/*{ onSubmit }*/) => {
     const [startDate, setStartDate] = useState<Date | null>(new Date());
     const [endDate, setEndDate] = useState<Date | null>(new Date());

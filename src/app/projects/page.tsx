@@ -1,23 +1,22 @@
-// "use client";
-
-import React, { useState } from 'react';
+import React from 'react';
 import './projects.scss';
 import Image from 'next/image';
 import { projects } from '@/tempJson/projects';
-import { BsThreeDots, BsPlusLg } from 'react-icons/bs';
-import Modal from '@/components/modal';
-import ProjectForm from '@/components/ProjectForm';
+import { BsPlusLg } from 'react-icons/bs';
+// import Modal from '@/components/modal';
+// import ProjectForm from '@/components/ProjectForm';
 import Link from 'next/link';
-
-const convertDate = (date: string) => {
-    return new Date(date).toLocaleString('en-US', {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric'
-    });
-};
+import ActionDropDown from '@/components/ActionDropDown';
 
 const page = () => {
+    const convertDate = (date: string) => {
+        return new Date(date).toLocaleString('en-US', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        });
+    };
+
     return (
         <div className="mainContent">
             <div className="pageContent">
@@ -89,11 +88,10 @@ const page = () => {
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="projectOptions">
-                                            <i>
-                                                <BsThreeDots />
-                                            </i>
-                                        </div>
+                                        <ActionDropDown
+                                            class="projectOptionsDropdown"
+                                            optionId={project.id}
+                                        />
                                     </td>
                                 </tr>
                             ))}

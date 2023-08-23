@@ -2,7 +2,8 @@ import React from 'react';
 import './agents.scss';
 import Image from 'next/image';
 import { agents } from '@/tempJson/agents';
-import { BsThreeDots, BsPlusLg } from 'react-icons/bs';
+import { BsPlusLg } from 'react-icons/bs';
+import ActionDropDown from '@/components/ActionDropDown';
 
 const page = () => {
     return (
@@ -71,11 +72,10 @@ const page = () => {
                                         <span>{agent.projects}</span>
                                     </td>
                                     <td>
-                                        <div className="projectOptions">
-                                            <i>
-                                                <BsThreeDots />
-                                            </i>
-                                        </div>
+                                        <ActionDropDown
+                                            class="projectOptionsDropdown"
+                                            optionId={agent.agentId}
+                                        />
                                     </td>
                                 </tr>
                             ))}

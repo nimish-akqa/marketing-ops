@@ -44,8 +44,40 @@
                         transform: translateY(-2px);
                     }
                 }
-                .projectOptions i {
-                    cursor: pointer;
+                .projectOptionsDropdown {
+                    position: relative;
+                    i {
+                        cursor: pointer;
+                        font-size: 16px;
+                        margin-right: 0.25rem;
+                        vertical-align: middle;
+                    }
+
+                    .projectOptions {
+                        // display: none;
+                        position: absolute;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        background-color: #fff;
+                        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+                        padding: 0.5rem 0;
+                        border-radius: 0.25rem;
+                        text-align: left;
+                        min-width: 10rem;
+                        right: 0;
+                        left: auto;
+                        z-index: 1000;
+                        animation-name: projectOptionsSlide;
+                        animation-duration: 0.3s;
+                        animation-fill-mode: both;
+                        a {
+                            padding: 0.35rem 1.5rem;
+                            &:hover {
+                                background-color: #f8f9fa;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -63,4 +95,13 @@
 }
 .danger {
     background-color: #f46a6a;
+}
+
+@keyframes projectOptionsSlide {
+    100% {
+        transform: translateY(0px);
+    }
+    0% {
+        transform: translateY(10px);
+    }
 }
