@@ -15,7 +15,7 @@ export default function NavLink({
     let segments = useSelectedLayoutSegments(); // ['projects','project-overview']
     // console.log(href, segment, segments);
 
-    let menuHeadingActive = href === '#' && segments.includes(`${segment}`);
+    // let menuHeadingActive = href === '#' && segments.includes(`${segment}`);
     let menuOptionActive = href === `/${segments.join('/')}`;
     // console.log({ href, menuOptionActive }, `/${segment}`);
     // console.log(

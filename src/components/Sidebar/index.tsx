@@ -1,7 +1,11 @@
 'use client';
 import './sidebar.scss';
 import { RiArrowDownSLine } from 'react-icons/ri';
-import { BiBriefcaseAlt2, BiSolidUserDetail } from 'react-icons/bi';
+import {
+    BiBriefcaseAlt2,
+    BiHomeCircle,
+    BiSolidUserDetail
+} from 'react-icons/bi';
 import { useState } from 'react';
 import NavLink from './navLink';
 
@@ -35,7 +39,12 @@ const Sidebar = () => {
             <ul>
                 <li className="menu_title">Menu</li>
                 <li className="menu_content">
-                    <NavLink href={'/'}>Dashboard</NavLink>
+                    <div className="menuHeading">
+                        <span>
+                            <BiHomeCircle size={30} />
+                            <NavLink href={'/'}>Dashboard</NavLink>
+                        </span>
+                    </div>
                 </li>
                 <li className="menu_title">Apps</li>
                 <li
