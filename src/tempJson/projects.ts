@@ -2,19 +2,19 @@ export const projects = [
     {
       id: 1,
       name: "Brand Logo Design",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident.",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident.",
       metadesc: "Design a logo with brand colors",
       startDate: "2023-08-18",
       endDate: "2023-08-19",
       status: "Completed",
       teamMembers: [
         {
-          userId: 1,
-          userName: "John",
+          agentId: 1,
+          name: "John",
         },
         {
-          userId: 2,
-          userName: "Greg",
+          agentId: 2,
+          name: "Greg",
         },
       ],
     },
@@ -28,8 +28,8 @@ export const projects = [
       status: "Delay",
       teamMembers: [
         {
-          userId: 1,
-          userName: "John",
+          agentId: 1,
+          name: "John",
         },
       ],
     },
@@ -43,12 +43,12 @@ export const projects = [
       status: "Pending",
       teamMembers: [
         {
-          userId: 2,
-          userName: "Greg",
+          agentId: 2,
+          name: "Greg",
         },
         {
-          userId: 3,
-          userName: "Alex",
+          agentId: 3,
+          name: "Alex",
         },
       ],
     },
@@ -62,20 +62,20 @@ export const projects = [
       status: "Pending",
       teamMembers: [
         {
-          userId: 1,
-          userName: "John",
+          agentId: 1,
+          name: "John",
         },
         {
-          userId: 4,
-          userName: "Dave",
+          agentId: 4,
+          name: "Dave",
         },
         {
-          userId: 5,
-          userName: "Amanda",
+          agentId: 5,
+          name: "Amanda",
         },
         {
-          userId: 2,
-          userName: "Greg",
+          agentId: 2,
+          name: "Greg",
         },
       ],
     },

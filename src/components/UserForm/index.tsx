@@ -22,7 +22,7 @@ const UserForm: React.FC = (/*{ onSubmit }*/) => {
     };
 
     return (
-        <div className="formContainerCard">
+        <div className="section formContainerCard">
             <div className="containerBody">
                 <div className="cardTitle">Create New User</div>
                 <form onSubmit={handleSubmit}>

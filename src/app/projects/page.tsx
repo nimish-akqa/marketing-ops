@@ -49,7 +49,13 @@ const page = () => {
                             {projects.map(project => (
                                 <tr key={project.id}>
                                     <td>
-                                        <span>{project.name}</span>
+                                        <span>
+                                            <Link
+                                                href={`/projects/project-overview/${project.id}`}
+                                            >
+                                                {project.name}
+                                            </Link>
+                                        </span>
                                         <p>{project.metadesc}</p>
                                     </td>
                                     <td>{convertDate(project.startDate)}</td>
@@ -74,10 +80,10 @@ const page = () => {
                                                 teamMember => (
                                                     <div
                                                         className="userAvatar"
-                                                        key={teamMember.userId}
+                                                        key={teamMember.agentId}
                                                     >
                                                         <Image
-                                                            src={`https://api.multiavatar.com/${teamMember.userId}.svg`}
+                                                            src={`https://api.multiavatar.com/${teamMember.agentId}.svg`}
                                                             width={32}
                                                             height={32}
                                                             alt="thumb"

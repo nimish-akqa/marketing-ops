@@ -20,7 +20,7 @@ const ProjectForm: React.FC = (/*{ onSubmit }*/) => {
     };
 
     return (
-        <div className="formContainerCard">
+        <div className="section formContainerCard">
             <div className="containerBody">
                 <div className="cardTitle">Create New Project</div>
                 <form onSubmit={handleSubmit}>

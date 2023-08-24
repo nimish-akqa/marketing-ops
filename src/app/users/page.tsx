@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { agents } from '@/tempJson/agents';
 import { BsPlusLg } from 'react-icons/bs';
 import ActionDropDown from '@/components/ActionDropDown';
+import Link from 'next/link';
 
 const page = () => {
     return (
@@ -16,7 +17,9 @@ const page = () => {
                     <div>
                         <button className="createButton">
                             <BsPlusLg />
-                            Create New Agent
+                            <Link href={`users/create-user`}>
+                                Create New Agent
+                            </Link>
                         </button>
                     </div>
                 </div>

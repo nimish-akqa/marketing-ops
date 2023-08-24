@@ -37,18 +37,18 @@ const Sidebar = () => {
     return (
         <nav className="sidebar">
             <ul>
-                <li className="menu_title">Menu</li>
-                <li className="menu_content">
+                <li className="menuTitle">Menu</li>
+                <li className="menuContent">
                     <div className="menuHeading">
-                        <span>
+                        <NavLink href={'/'}>
                             <BiHomeCircle size={30} />
-                            <NavLink href={'/'}>Dashboard</NavLink>
-                        </span>
+                            <span>Dashboard</span>
+                        </NavLink>
                     </div>
                 </li>
-                <li className="menu_title">Apps</li>
+                <li className="menuTitle">Apps</li>
                 <li
-                    className={`menu_content ${
+                    className={`menuContent ${
                         menuStates.projectsMenu ? 'menuActive' : ''
                     }`}
                 >
@@ -56,11 +56,10 @@ const Sidebar = () => {
                         className="menuHeading"
                         onClick={() => handleMenuClick('projectsMenu')}
                     >
-                        <span>
+                        <NavLink href={''}>
                             <BiBriefcaseAlt2 size={30} />
-                            {/* <Link href="#">Projects</Link> */}
-                            <NavLink href={'/'}>Projects</NavLink>
-                        </span>
+                            <span>Projects</span>
+                        </NavLink>
 
                         <RiArrowDownSLine size={20} className="menuArrow" />
                     </div>
@@ -70,21 +69,14 @@ const Sidebar = () => {
                         }`}
                     >
                         <li>
-                            {/* <Link href="/projects">Projects List</Link> */}
                             <NavLink href={'/projects'}>Projects List</NavLink>
                         </li>
-                        <li>
-                            {/* <Link href="/projects/project-overview">
-                                Project Overview
-                            </Link> */}
+                        {/* <li>
                             <NavLink href={'/projects/project-overview'}>
                                 Projects Overview
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li>
-                            {/* <Link href="/projects/create-project">
-                                Create Project
-                            </Link> */}
                             <NavLink href={'/projects/create-project'}>
                                 Create Project
                             </NavLink>
@@ -92,7 +84,7 @@ const Sidebar = () => {
                     </ul>
                 </li>
                 <li
-                    className={`menu_content ${
+                    className={`menuContent ${
                         menuStates.usersMenu ? 'menuActive' : ''
                     }`}
                 >
@@ -100,10 +92,10 @@ const Sidebar = () => {
                         className="menuHeading"
                         onClick={() => handleMenuClick('usersMenu')}
                     >
-                        <span>
+                        <NavLink href={''}>
                             <BiSolidUserDetail size={30} />
-                            <NavLink href={'/'}>Users</NavLink>
-                        </span>
+                            <span>Users</span>
+                        </NavLink>
                         <RiArrowDownSLine size={20} className="menuArrow" />
                     </div>
                     <ul
@@ -113,10 +105,8 @@ const Sidebar = () => {
                     >
                         <li>
                             <NavLink href={'/users'}>User List</NavLink>
-                            {/* <Link href="/users"></Link> */}
                         </li>
                         <li>
-                            {/* <Link href="/users/create-user">Create User</Link> */}
                             <NavLink href="/users/create-user">
                                 Create User
                             </NavLink>
