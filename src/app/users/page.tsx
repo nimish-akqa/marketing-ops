@@ -51,15 +51,9 @@ const page = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
-                                        <span>{agent.name}</span>
-                                    </td>
-                                    <td>
-                                        <span>{agent.agentType}</span>
-                                    </td>
-                                    <td>
-                                        <span>{agent.email}</span>
-                                    </td>
+                                    <td>{agent.name}</td>
+                                    <td>{agent.agentType}</td>
+                                    <td>{agent.email}</td>
                                     <td>
                                         <div className="skillGroup">
                                             {agent.skills.map(skill => (
@@ -71,9 +65,7 @@ const page = () => {
                                             ))}
                                         </div>
                                     </td>
-                                    <td>
-                                        <span>{agent.projects}</span>
-                                    </td>
+                                    <td>{agent.projects}</td>
                                     <td>
                                         <ActionDropDown
                                             class="projectOptionsDropdown"
