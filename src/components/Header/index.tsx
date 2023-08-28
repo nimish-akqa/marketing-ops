@@ -1,13 +1,23 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import './header.scss';
 import { BsBell } from 'react-icons/bs';
 import { FaBars } from 'react-icons/fa';
 
 const Header = () => {
+    const toggleNavbar = () => {
+        const body = document.body;
+        if (body.classList.contains('sidebarCollapsed')) {
+            body.classList.remove('sidebarCollapsed');
+        } else {
+            body.classList.add('sidebarCollapsed');
+        }
+    };
+
     return (
         <header className="pageHeader">
             <div className="navBarHeader">
-                <div className="dflex">
+                <div className="dflex" onClick={toggleNavbar}>
                     <button type="button" className="btn">
                         <FaBars />
                     </button>

@@ -41,7 +41,9 @@ const Sidebar = () => {
                 <li className="menuContent">
                     <div className="menuHeading">
                         <NavLink href={'/'}>
-                            <BiHomeCircle size={30} />
+                            <i>
+                                <BiHomeCircle size={30} />
+                            </i>
                             <span>Dashboard</span>
                         </NavLink>
                     </div>
@@ -57,11 +59,15 @@ const Sidebar = () => {
                         onClick={() => handleMenuClick('projectsMenu')}
                     >
                         <NavLink href={''}>
-                            <BiBriefcaseAlt2 size={30} />
+                            <i>
+                                <BiBriefcaseAlt2 size={30} />
+                            </i>
                             <span>Projects</span>
                         </NavLink>
 
-                        <RiArrowDownSLine size={20} className="menuArrow" />
+                        <i>
+                            <RiArrowDownSLine size={20} className="menuArrow" />
+                        </i>
                     </div>
                     <ul
                         className={`projectsMenu ${
@@ -93,10 +99,14 @@ const Sidebar = () => {
                         onClick={() => handleMenuClick('usersMenu')}
                     >
                         <NavLink href={''}>
-                            <BiSolidUserDetail size={30} />
+                            <i>
+                                <BiSolidUserDetail size={30} />
+                            </i>
                             <span>Users</span>
                         </NavLink>
-                        <RiArrowDownSLine size={20} className="menuArrow" />
+                        <i>
+                            <RiArrowDownSLine size={20} className="menuArrow" />
+                        </i>
                     </div>
                     <ul
                         className={`usersMenu ${

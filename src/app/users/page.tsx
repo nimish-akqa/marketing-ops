@@ -15,12 +15,12 @@ const page = () => {
                         <h4>AGENT LIST</h4>
                     </div>
                     <div>
-                        <button className="createButton">
+                        <div className="createButton">
                             <BsPlusLg />
                             <Link href={`users/create-user`}>
                                 Create New Agent
                             </Link>
-                        </button>
+                        </div>
                     </div>
                 </div>
                 <div className="section">
