@@ -100,7 +100,7 @@ const page = ({ params }: { params: { slug: string } }) => {
                                     <tbody>
                                         {project?.teamMembers &&
                                             project?.teamMembers.map(member => (
-                                                <tr>
+                                                <tr key={member.agentId}>
                                                     <td>
                                                         <div className="userGroup">
                                                             <div className="userAvatar">
