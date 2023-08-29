@@ -59,6 +59,7 @@ const page = () => {
                                             {agent.skills.map(skill => (
                                                 <span
                                                     className={`skills success`}
+                                                    key={skill}
                                                 >
                                                     {skill}
                                                 </span>
