@@ -23,7 +23,7 @@ const page = () => {
                         </div>
                     </div>
                 </div>
-                <div className="section">
+                <div className="section sectionContent">
                     <table>
                         <thead>
                             <tr>

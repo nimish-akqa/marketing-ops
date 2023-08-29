@@ -116,12 +116,14 @@ a {
 .mainContent {
     margin-left: 250px;
     padding: 70px 0px;
+    height: 100vh;
 }
 .pageContent {
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 0px 18px;
+    height: 100%;
 }
 .pageTitle {
     padding: 20px 0px;
@@ -132,6 +134,9 @@ a {
 
     align-items: center;
     justify-content: space-between;
+}
+.sectionContent {
+    flex-grow: 1;
 }
 
 @media (max-width: 576px) {
