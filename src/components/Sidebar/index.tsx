@@ -1,13 +1,14 @@
 'use client';
-import './sidebar.scss';
+// import './sidebar.scss';
 import { RiArrowDownSLine } from 'react-icons/ri';
 import {
     BiBriefcaseAlt2,
     BiHomeCircle,
     BiSolidUserDetail
 } from 'react-icons/bi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NavLink from './navLink';
+import { useSidebarContext } from '@/app/sidebar-context';
 
 type MenuStates = {
     [menu: string]: boolean;
@@ -17,22 +18,31 @@ const Sidebar = () => {
         projectsMenu: false,
         usersMenu: false
     });
-
+    const { sidebarCollapsed, setSidebarCollapsed } = useSidebarContext();
     const handleMenuClick = (menuName: string) => {
-        setMenuStates(prevMenuStates => ({
-            ...prevMenuStates,
-            [menuName]: !prevMenuStates[menuName]
-        }));
+        if (!sidebarCollapsed) {
+            setMenuStates(prevMenuStates => ({
+                ...prevMenuStates,
+                [menuName]: !prevMenuStates[menuName]
+            }));
 
-        Object.keys(menuStates).forEach(key => {
-            if (key !== menuName) {
-                setMenuStates(prevMenuStates => ({
-                    ...prevMenuStates,
-                    [key]: false
-                }));
-            }
-        });
+            Object.keys(menuStates).forEach(key => {
+                if (key !== menuName) {
+                    setMenuStates(prevMenuStates => ({
+                        ...prevMenuStates,
+                        [key]: false
+                    }));
+                }
+            });
+        }
     };
+    useEffect(() => {
+        if (sidebarCollapsed)
+            setMenuStates({
+                projectsMenu: false,
+                usersMenu: false
+            });
+    }, [sidebarCollapsed]);
 
     return (
         <nav className="sidebar">

@@ -1,23 +1,29 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import './header.scss';
+import React, { useEffect } from 'react';
+// import './header.scss';
 import { BsBell } from 'react-icons/bs';
 import { FaBars } from 'react-icons/fa';
+import { useSidebarContext } from '@/app/sidebar-context';
 
 const Header = () => {
-    const toggleNavbar = () => {
+    const { sidebarCollapsed, setSidebarCollapsed } = useSidebarContext();
+
+    useEffect(() => {
         const body = document.body;
-        if (body.classList.contains('sidebarCollapsed')) {
-            body.classList.remove('sidebarCollapsed');
-        } else {
+        if (sidebarCollapsed) {
             body.classList.add('sidebarCollapsed');
+        } else {
+            body.classList.remove('sidebarCollapsed');
         }
-    };
+    }, [sidebarCollapsed]);
 
     return (
         <header className="pageHeader">
             <div className="navBarHeader">
-                <div className="dflex" onClick={toggleNavbar}>
+                <div
+                    className="dflex"
+                    onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+                >
                     <button type="button" className="btn">
                         <FaBars />
                     </button>

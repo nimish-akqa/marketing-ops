@@ -4,9 +4,23 @@ import { BiCalendar, BiCalendarCheck } from 'react-icons/bi';
 import Image from 'next/image';
 import { projects } from '@/tempJson/projects';
 import { agents } from '@/tempJson/agents';
+import { notFound } from 'next/navigation';
+
+export async function generateStaticParams() {
+    // const posts = await fetch('https://.../posts').then((res) => res.json())
+    return projects.map(project => ({
+        params: {
+            slug: project.id
+        }
+    }));
+}
 
 const page = ({ params }: { params: { slug: string } }) => {
     const project = projects.find(project => project.id === +params.slug);
+    // console.log(params.slug);
+    if (!project) {
+        notFound();
+    }
     const convertDate = (date: string) => {
         return new Date(date).toLocaleString('en-US', {
             day: 'numeric',
@@ -22,7 +36,7 @@ const page = ({ params }: { params: { slug: string } }) => {
                         <h4>Project Overview</h4>
                     </div>
                 </div>
-                <div className="section">
+                <div className="section sectionProjectOverview">
                     <div className="card projectCard">
                         <div className="cardBody">
                             <div className="cardTitle projectTitle">

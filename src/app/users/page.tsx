@@ -14,14 +14,10 @@ const page = () => {
                     <div className="pageTitle">
                         <h4>AGENT LIST</h4>
                     </div>
-                    <div>
-                        <div className="createButton">
-                            <BsPlusLg />
-                            <Link href={`users/create-user`}>
-                                Create New Agent
-                            </Link>
-                        </div>
-                    </div>
+                    <Link className="createButton" href={`users/create-user`}>
+                        <BsPlusLg />
+                        Create New Agent
+                    </Link>
                 </div>
                 <div className="section sectionContent">
                     <table>

@@ -24,14 +24,13 @@ const page = () => {
                     <div className="pageTitle">
                         <h4>PROJECTS LIST</h4>
                     </div>
-                    <div>
-                        <div className="createButton">
-                            <BsPlusLg />
-                            <Link href={`projects/create-project`}>
-                                Create Project
-                            </Link>
-                        </div>
-                    </div>
+                    <Link
+                        className="createButton"
+                        href={`projects/create-project`}
+                    >
+                        <BsPlusLg />
+                        Create Project
+                    </Link>
                 </div>
                 <div className="section sectionContent">
                     <table>
