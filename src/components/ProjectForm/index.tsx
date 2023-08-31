@@ -1,21 +1,22 @@
 'use client';
 import React, { FormEvent, useState } from 'react';
 import './projectform.scss';
-import { agents } from '@/tempJson/agents';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Agent } from '@/types/global';
 
-// interface MyFormProps {
-//   onSubmit: () => void;
-// }
+interface ProjectFormProps {
+    agents: Agent[];
+    // onSubmit: () => void;
+}
 
-const ProjectForm: React.FC = (/*{ onSubmit }*/) => {
+const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
     const [startDate, setStartDate] = useState<Date | null>(new Date());
     const [endDate, setEndDate] = useState<Date | null>(new Date());
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        // Implement your form submission logic here
+        // Implement form submission logic here
         // onSubmit();
     };
 

@@ -4,10 +4,6 @@ import '../ProjectForm/projectform.scss';
 import './userform.scss';
 import { IoMdCloudUpload } from 'react-icons/io';
 
-// interface MyFormProps {
-//   onSubmit: () => void;
-// }
-
 const UserForm: React.FC = (/*{ onSubmit }*/) => {
     const uploadAvatarButton = useRef<HTMLInputElement | null>(null);
 

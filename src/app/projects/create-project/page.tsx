@@ -1,17 +1,26 @@
 import ProjectForm from '@/components/ProjectForm';
 import React from 'react';
-const page = () => {
+import { Agent } from '@/types/global';
+
+const getAgents = async () => {
+    const data = await fetch(`http://localhost:8000/agents/`)
+        .then(res => res.json())
+        .catch(err => {
+            console.log(err.message);
+        });
+    return data;
+};
+const page = async () => {
+    const agents: Agent[] = await getAgents();
     return (
-        <div className="mainContent">
-            <div className="pageContent">
-                <div className="section sectionHeader">
-                    <div className="pageTitle">
-                        <h4>CREATE NEW </h4>
-                    </div>
+        <>
+            <div className="section sectionHeader">
+                <div className="pageTitle">
+                    <h4>CREATE NEW </h4>
                 </div>
-                <ProjectForm />
             </div>
-        </div>
+            <ProjectForm agents={agents} />
+        </>
     );
 };
 

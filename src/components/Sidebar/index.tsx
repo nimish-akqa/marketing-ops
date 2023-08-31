@@ -1,5 +1,4 @@
 'use client';
-// import './sidebar.scss';
 import { RiArrowDownSLine } from 'react-icons/ri';
 import {
     BiBriefcaseAlt2,
@@ -87,11 +86,6 @@ const Sidebar = () => {
                         <li>
                             <NavLink href={'/projects'}>Projects List</NavLink>
                         </li>
-                        {/* <li>
-                            <NavLink href={'/projects/project-overview'}>
-                                Projects Overview
-                            </NavLink>
-                        </li> */}
                         <li>
                             <NavLink href={'/projects/create-project'}>
                                 Create Project

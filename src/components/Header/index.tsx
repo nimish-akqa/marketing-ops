@@ -1,6 +1,5 @@
 'use client';
 import React, { useEffect } from 'react';
-// import './header.scss';
 import { BsBell } from 'react-icons/bs';
 import { FaBars } from 'react-icons/fa';
 import { useSidebarContext } from '@/app/sidebar-context';
