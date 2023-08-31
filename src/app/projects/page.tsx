@@ -7,7 +7,9 @@ import ActionDropDown from '@/components/ActionDropDown';
 import { Project } from '@/types/global';
 
 const getProjects = async () => {
-    const data = await fetch(`http://localhost:8000/projects/`)
+    const data = await fetch(`/projects/`, {
+        cache: 'no-store'
+    })
         .then(res => res.json())
         .catch(err => {
             console.log(err.message);

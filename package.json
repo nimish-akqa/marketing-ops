@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "start-json-server": "json-server src/app/api/db.json --watch --port 8000"
+    "start-json-server": "json-server db.json --watch --port 3000"
   },
   "dependencies": {
     "@types/node": "20.4.9",
