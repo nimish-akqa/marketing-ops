@@ -3,9 +3,12 @@ import React from 'react';
 import { Agent } from '@/types/global';
 
 const getAgents = async () => {
-    const data = await fetch(`/agents/`, {
-        cache: 'no-store'
-    })
+    const data = await fetch(
+        `https://json-server-vercel-nimish-akqa.vercel.app/agents/`,
+        {
+            cache: 'no-store'
+        }
+    )
         .then(res => res.json())
         .catch(err => {
             console.log(err.message);

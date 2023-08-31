@@ -6,9 +6,12 @@ import { notFound } from 'next/navigation';
 import { Project, Agent } from '@/types/global';
 
 const getProject = async (slug: number) => {
-    const data = await fetch(`/projects/${slug}`, {
-        cache: 'no-store'
-    })
+    const data = await fetch(
+        `https://json-server-vercel-nimish-akqa.vercel.app/projects/${slug}`,
+        {
+            cache: 'no-store'
+        }
+    )
         .then(res => res.json())
         .catch(err => {
             console.log(err.message);
@@ -17,9 +20,12 @@ const getProject = async (slug: number) => {
 };
 
 const getAgents = async () => {
-    const data = await fetch(`/agents/`, {
-        cache: 'no-store'
-    })
+    const data = await fetch(
+        `https://json-server-vercel-nimish-akqa.vercel.app/agents/`,
+        {
+            cache: 'no-store'
+        }
+    )
         .then(res => res.json())
         .catch(err => {
             console.log(err.message);

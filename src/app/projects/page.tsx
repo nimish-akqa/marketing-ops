@@ -7,9 +7,12 @@ import ActionDropDown from '@/components/ActionDropDown';
 import { Project } from '@/types/global';
 
 const getProjects = async () => {
-    const data = await fetch(`/projects/`, {
-        cache: 'no-store'
-    })
+    const data = await fetch(
+        `https://json-server-vercel-nimish-akqa.vercel.app/projects/`,
+        {
+            cache: 'no-store'
+        }
+    )
         .then(res => res.json())
         .catch(err => {
             console.log(err.message);
