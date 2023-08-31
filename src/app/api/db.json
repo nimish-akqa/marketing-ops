@@ -129,6 +129,14 @@
             "agentType": "Human",
             "skills": ["Reactjs","Javascript","Java"],
             "projects": 0
+          },
+          {
+            "agentId": 7,
+            "name": "Mark",
+            "email": "mark@email.com",
+            "agentType": "Human",
+            "skills": ["Ruby","Javascript"],
+            "projects": 0
           }
       ]
 }

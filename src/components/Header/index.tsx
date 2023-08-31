@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { BsBell } from 'react-icons/bs';
 import { FaBars } from 'react-icons/fa';
 import { useSidebarContext } from '@/app/sidebar-context';
+import Image from 'next/image';
 
 const Header = () => {
     const { sidebarCollapsed, setSidebarCollapsed } = useSidebarContext();
@@ -36,11 +37,13 @@ const Header = () => {
 
                     <div className="profile">
                         <button className="dropdown">
-                            <img
+                            <Image
                                 className="header-profile-user"
-                                src="https://skote-v-light.react.themesbrand.com/static/media/avatar-1.3921191a8acf79d3e907.jpg"
-                                alt="Header Avatar"
-                            ></img>{' '}
+                                src={`https://api.multiavatar.com/avatar.svg`}
+                                width={32}
+                                height={32}
+                                alt="thumb"
+                            />
                         </button>
                     </div>
                 </div>

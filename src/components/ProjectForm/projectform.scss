@@ -79,8 +79,20 @@ select {
             width: 100% !important;
             padding: 0px !important;
         }
-        .formFieldRow > div {
-            width: 100% !important;
+    }
+    .formFieldRow > div {
+        width: 100% !important;
+    }
+    .buttonContainer {
+        div {
+            padding: 0px !important;
+        }
+    }
+    .formContainerCard {
+        .containerBody {
+            .cardTitle {
+                padding: 0px !important;
+            }
         }
     }
 }

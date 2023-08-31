@@ -145,3 +145,15 @@ a {
         align-items: start;
     }
 }
+@media (max-width: 992px) {
+    .mainContent {
+        margin-left: 0px !important;
+        height: auto;
+    }
+    .pageHeader {
+        left: 0px !important;
+    }
+    .pageFooter {
+        left: 0px !important;
+    }
+}

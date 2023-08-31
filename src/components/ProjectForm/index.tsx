@@ -90,14 +90,15 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
                                 className="form-control"
                                 multiple
                             >
-                                {agents.map(agent => (
-                                    <option
-                                        value={agent.agentId}
-                                        key={agent.agentId}
-                                    >
-                                        {agent.name}
-                                    </option>
-                                ))}
+                                {agents &&
+                                    agents.map(agent => (
+                                        <option
+                                            value={agent.agentId}
+                                            key={agent.agentId}
+                                        >
+                                            {agent.name}
+                                        </option>
+                                    ))}
                             </select>
                         </div>
                     </div>
