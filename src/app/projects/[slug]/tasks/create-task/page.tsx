@@ -2,12 +2,6 @@ import ProjectForm from '@/components/ProjectForm';
 import React from 'react';
 import { Agent } from '@/types/global';
 
-// library Import
-// shared compont
-// local import
-// utility
-// styles
-
 const getAgents = async () => {
     const data = await fetch(
         `${process.env.NEXT_PUBLIC_JSON_SERVER_PATH}/agents/`,
@@ -27,10 +21,10 @@ const page = async () => {
         <>
             <div className="section sectionHeader">
                 <div className="pageTitle">
-                    <h4>CREATE NEW </h4>
+                    <h4>CREATE NEW TASK</h4>
                 </div>
             </div>
-            <ProjectForm agents={agents} />
+            {/* <ProjectForm agents={agents} /> */}
         </>
     );
 };

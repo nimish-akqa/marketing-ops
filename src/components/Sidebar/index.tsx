@@ -17,7 +17,7 @@ const Sidebar = () => {
         projectsMenu: false,
         usersMenu: false
     });
-    const { sidebarCollapsed, setSidebarCollapsed } = useSidebarContext();
+    const { sidebarCollapsed } = useSidebarContext();
     const handleMenuClick = (menuName: string) => {
         if (!sidebarCollapsed) {
             setMenuStates(prevMenuStates => ({

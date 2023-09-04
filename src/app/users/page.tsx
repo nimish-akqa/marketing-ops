@@ -8,7 +8,7 @@ import { Agent } from '@/types/global';
 
 const getAgents = async () => {
     const data = await fetch(
-        `https://json-server-vercel-nimish-akqa.vercel.app/agents/`,
+        `${process.env.NEXT_PUBLIC_JSON_SERVER_PATH}/agents/`,
         {
             cache: 'no-store'
         }

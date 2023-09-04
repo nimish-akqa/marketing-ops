@@ -1,3 +1,11 @@
+
+export interface Task {
+    id: number;
+    title: string;
+    type: string;
+    agent: string;
+    status: string;
+}
 export interface Project {
     id: number;
     name: string;
@@ -7,6 +15,7 @@ export interface Project {
     endDate: string;
     status: string;
     teamMembers: { agentId: number; name: string }[];
+    tasks: Task[]
 }
 export interface Agent {
     agentId: number;

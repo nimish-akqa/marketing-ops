@@ -17,6 +17,50 @@
             "agentId": 2,
             "name": "Greg"
           }
+        ],
+        "tasks": [
+          {
+            "id": 1,
+            "title": "Brand website Article",
+            "type": "Website",
+            "agent": "Greg",
+            "status": "Pending"
+          },
+          {
+            "id": 2,
+            "title": "Brand Twitter Post",
+            "type": "Twitter",
+            "agent": "John",
+            "status": "Completed"
+          },
+          {
+            "id": 3,
+            "title": "Brand Instagram Post",
+            "type": "Instagram",
+            "agent": "John",
+            "status": "Pending"
+          },
+          {
+            "id": 4,
+            "title": "Brand website Article 2",
+            "type": "Website",
+            "agent": "Greg",
+            "status": "Pending"
+          },
+          {
+            "id": 5,
+            "title": "Brand Twitter Post 2",
+            "type": "Twitter",
+            "agent": "John",
+            "status": "Waiting"
+          },
+          {
+            "id": 6,
+            "title": "Brand Instagram Post 2",
+            "type": "Instagram",
+            "agent": "John",
+            "status": "Waiting"
+          }
         ]
       },
       {
@@ -31,6 +75,15 @@
           {
             "agentId": 1,
             "name": "John"
+          }
+        ],
+        "tasks": [
+          {
+            "id": 1,
+            "title": "Landing Page website article",
+            "type": "Website",
+            "agent": "John",
+            "status": "Completed"
           }
         ]
       },

@@ -1,13 +1,14 @@
 import React from 'react';
-import './projectoverview.scss';
-import { BiCalendar, BiCalendarCheck } from 'react-icons/bi';
+import './style.scss';
+import { BiCalendar, BiCalendarCheck, BiRightArrowAlt } from 'react-icons/bi';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { Project, Agent } from '@/types/global';
+import { Project, Agent, Task } from '@/types/global';
+import Link from 'next/link';
 
 const getProject = async (slug: number) => {
     const data = await fetch(
-        `https://json-server-vercel-nimish-akqa.vercel.app/projects/${slug}`,
+        `${process.env.NEXT_PUBLIC_JSON_SERVER_PATH}/projects/${slug}`,
         {
             cache: 'no-store'
         }
@@ -21,7 +22,7 @@ const getProject = async (slug: number) => {
 
 const getAgents = async () => {
     const data = await fetch(
-        `https://json-server-vercel-nimish-akqa.vercel.app/agents/`,
+        `${process.env.NEXT_PUBLIC_JSON_SERVER_PATH}/agents/`,
         {
             cache: 'no-store'
         }
@@ -49,6 +50,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
         notFound();
     }
     const agents: Agent[] = await getAgents();
+    const tasks: Task[] = project.tasks?.slice(0, 3);
 
     return (
         <>
@@ -153,6 +155,86 @@ const page = async ({ params }: { params: { slug: number } }) => {
                     </div>
                 </div>
             </div>
+            {tasks && (
+                <div className="section sectionTaskList">
+                    <div className="card teamCard">
+                        <div className="cardBody">
+                            <div className="cardTitle">
+                                <h5>Tasks List</h5>
+                            </div>
+                            <div className="cardContent">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Type</th>
+                                            <th>Agent</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {tasks.map((task: Task) => (
+                                            <tr key={task.id}>
+                                                <td>
+                                                    <span>
+                                                        <Link
+                                                            href={`/projects/${task.id}`}
+                                                        >
+                                                            {task.title}
+                                                        </Link>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span>{task.type}</span>
+                                                </td>
+
+                                                <td>
+                                                    <div className="userGroup">
+                                                        <div className="userAvatar">
+                                                            <Image
+                                                                src={`https://api.multiavatar.com/${task.agent}.svg`}
+                                                                width={32}
+                                                                height={32}
+                                                                alt="thumb"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span
+                                                        className={`projectStatus ${
+                                                            task.status ===
+                                                            'Completed'
+                                                                ? `success`
+                                                                : task.status ===
+                                                                  'Pending'
+                                                                ? `warning`
+                                                                : task.status ===
+                                                                  'Waiting'
+                                                                ? `waiting`
+                                                                : `danger`
+                                                        }`}
+                                                    >
+                                                        {task.status}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                                {project?.tasks?.length >= 3 && (
+                                    <div className="showMore">
+                                        <Link href={`/projects/${slug}/tasks`}>
+                                            Show more
+                                            <BiRightArrowAlt size={20} />
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 };

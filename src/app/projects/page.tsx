@@ -8,7 +8,7 @@ import { Project } from '@/types/global';
 
 const getProjects = async () => {
     const data = await fetch(
-        `https://json-server-vercel-nimish-akqa.vercel.app/projects/`,
+        `${process.env.NEXT_PUBLIC_JSON_SERVER_PATH}/projects/`,
         {
             cache: 'no-store'
         }
@@ -58,9 +58,7 @@ const page = async () => {
                             <tr key={project.id}>
                                 <td>
                                     <span>
-                                        <Link
-                                            href={`/projects/project-overview/${project.id}`}
-                                        >
+                                        <Link href={`/projects/${project.id}`}>
                                             {project.name}
                                         </Link>
                                     </span>
