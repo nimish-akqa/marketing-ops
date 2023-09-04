@@ -1,26 +1,27 @@
-import './globals.scss'
-import '../components/Header/header.scss'
-import '../components/Sidebar/sidebar.scss'
-import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
+import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
+
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SidebarContextProvider from './sidebar-context'
+import SidebarContextProvider from './sidebar-context';
+
+import './globals.scss';
+import '../components/Header/header.scss';
+import '../components/Sidebar/sidebar.scss';
 import 'react-datepicker/dist/react-datepicker.min.css';
 
-
-const poppins = Poppins({ weight:['400'],subsets: ["latin"] });
+const poppins = Poppins({ weight: ['400'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "PMS",
-  description: "Marketting Ops PMS",
+  title: 'PMS',
+  description: 'Marketting Ops PMS'
 };
 
 export default function RootLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -29,11 +30,9 @@ export default function RootLayout({
           <Header></Header>
           <Sidebar></Sidebar>
           <div className="mainContent">
-              <div className="pageContent">
-              {children}
-              </div>
+            <div className="pageContent">{children}</div>
           </div>
-          <Footer></Footer> 
+          <Footer></Footer>
         </SidebarContextProvider>
       </body>
     </html>
