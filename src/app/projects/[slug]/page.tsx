@@ -118,7 +118,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
               <h5>Tasks List</h5>
               <TaskButton params={params} />
             </div>
-            <div className="cardContent">
+            <div className="cardContent taskCardContent">
               {tasks ? (
                 <>
                   <table>

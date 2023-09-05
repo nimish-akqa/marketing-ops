@@ -131,5 +131,14 @@
       color: #888; /* Adjust the color to your preference */
       padding: 20px;
     }
+    @media (max-width: 576px) {
+      .taskCardTitle {
+        flex-direction: column !important;
+        align-items: start;
+      }
+      .taskCardContent {
+        overflow-x: auto;
+      }
+    }
   }
 }

@@ -31,3 +31,10 @@
 .show {
   display: block !important;
 }
+
+@media (max-width: 576px) {
+  .dropdownContent {
+    left: 0 !important;
+    right: auto;
+  }
+}
