@@ -1,13 +1,18 @@
 import React from 'react';
-import { Agent } from '@/types/global';
+import TaskForm from '@/components/TaskForm';
+import { notFound } from 'next/navigation';
 
-import ProjectForm from '@/components/ProjectForm';
-import { getAgents } from '@/utils/apiUtils';
+const page = ({
+  searchParams
+}: {
+  searchParams?: { [key: string]: string };
+}) => {
+  const task = searchParams?.task;
 
+  if (!task) {
+    notFound();
+  }
 
-
-const page = async () => {
-  const agents: Agent[] = await getAgents();
   return (
     <>
       <div className="section sectionHeader">
@@ -15,7 +20,7 @@ const page = async () => {
           <h4>CREATE NEW TASK</h4>
         </div>
       </div>
-      {/* <ProjectForm agents={agents} /> */}
+      <TaskForm platform={task} />
     </>
   );
 };

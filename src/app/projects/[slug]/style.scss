@@ -1,117 +1,135 @@
 @import '../../users/agents.scss';
 
 .pageContent {
-    .pageTitle {
-        padding: 20px 0px;
+  .pageTitle {
+    padding: 20px 0px;
+  }
+  table {
+    border-spacing: unset;
+    border-collapse: collapse;
+    tr {
+      border-bottom: 1px solid #f6f6f6;
+      td {
+        border-bottom-width: 1px;
+      }
     }
-    table {
-        border-spacing: unset;
-        border-collapse: collapse;
-        tr {
-            border-bottom: 1px solid #f6f6f6;
-            td {
-                border-bottom-width: 1px;
-            }
-        }
-    }
-    .showMore {
-        display: flex;
-        justify-content: flex-end;
-        color: #556ee6;
-        font-size: 13px;
-        padding: 0.75rem;
+  }
+  .showMore {
+    display: flex;
+    justify-content: flex-end;
+    color: #556ee6;
+    font-size: 13px;
+    padding: 0.75rem;
 
-        a {
-            display: flex;
-            align-items: center;
-        }
+    a {
+      display: flex;
+      align-items: center;
     }
-    .card {
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+    background-color: #fff;
+    border-radius: 0.375rem;
+    width: 100%;
+    .cardBody {
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem;
+      gap: 10px;
+      .cardTitle {
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
-        background-color: #fff;
-        border-radius: 0.375rem;
-        width: 100%;
-        .cardBody {
+        gap: 10px;
+      }
+      h5 {
+        font-size: 15px;
+        font-weight: 500;
+      }
+      p {
+        color: #74788d;
+      }
+    }
+  }
+  .sectionProjectOverview {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    .projectCard {
+      flex: 2;
+    }
+    .teamCard {
+      flex: 1;
+    }
+    .card {
+      .cardBody {
+        .projectDuration {
+          display: flex;
+        }
+        .date {
+          width: 200px;
+          span {
+            padding-left: 10px;
+          }
+          div {
             display: flex;
-            flex-direction: column;
-            padding: 1.25rem;
-            gap: 10px;
-            .cardTitle {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-            h5 {
-                font-size: 15px;
-                font-weight: 500;
-            }
-            p {
-                color: #74788d;
-            }
+            align-items: center;
+            gap: 5px;
+          }
         }
+      }
     }
-    .sectionProjectOverview {
-        display: flex;
+    .projectCard {
+      // align-self: flex-start;
+      .cardBody {
+        justify-content: space-between;
         gap: 1rem;
-        flex-wrap: wrap;
-        .projectCard {
-            flex: 2;
+        height: 100%;
+        .projectDetails {
+          flex: 2;
         }
-        .teamCard {
-            flex: 1;
-        }
-        .card {
-            .cardBody {
-                .projectDuration {
-                    display: flex;
-                }
-                .date {
-                    width: 200px;
-                    span {
-                        padding-left: 10px;
-                    }
-                    div {
-                        display: flex;
-                        align-items: center;
-                        gap: 5px;
-                    }
-                }
-            }
-        }
-        .projectCard {
-            align-self: flex-start;
-            .cardBody {
-                justify-content: space-between;
-                gap: 1rem;
-                height: 100%;
-                .projectDetails {
-                    flex: 2;
-                }
-            }
-        }
-        .teamCard {
-            table {
-                tr {
-                    border-bottom: 1px solid #f6f6f6;
-                    td:first-child {
-                        width: 60px;
-                    }
-                    .userGroup {
-                        .userAvatar {
-                            margin: 0px !important;
-                            cursor: unset;
-                            &:hover {
-                                transform: unset;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
-    .sectionTaskList {
-        display: flex;
+    .teamCard {
+      table {
+        tr {
+          border-bottom: 1px solid #f6f6f6;
+          td:first-child {
+            width: 60px;
+          }
+          .userGroup {
+            .userAvatar {
+              margin: 0px !important;
+              cursor: unset;
+              &:hover {
+                transform: unset;
+              }
+            }
+          }
+        }
+      }
     }
+  }
+  .sectionTaskList {
+    display: flex;
+    .taskCardTitle {
+      flex-direction: row !important;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .taskStatus {
+      color: #fff;
+      border-radius: 0.25rem;
+      // padding: .25rem .4rem;
+      padding: 0.1rem 0.3rem;
+      font-size: 75%;
+    }
+    .noTasks {
+      text-align: center;
+      font-size: 16px;
+      color: #888; /* Adjust the color to your preference */
+      padding: 20px;
+    }
+  }
 }

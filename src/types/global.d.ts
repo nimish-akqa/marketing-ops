@@ -24,3 +24,16 @@ export interface Agent {
   skills: string[];
   projects: number;
 }
+
+export interface AudiencePersona {
+  id: number;
+  name: string;
+  role: string;
+  problems: string;
+  pains: string;
+  jobs: string;
+  motivation: string;
+  trigger: string;
+  barriers: string;
+  context: string;
+}

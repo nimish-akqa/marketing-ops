@@ -1,187 +1,225 @@
 {
-  "projects" : [
-      {
-        "id": 1,
-        "name": "Brand Logo Design",
-        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident.",
-        "metadesc": "Design a logo with brand colors",
-        "startDate": "2023-08-18",
-        "endDate": "2023-08-19",
-        "status": "Completed",
-        "teamMembers": [
-          {
-            "agentId": 1,
-            "name": "John"
-          },
-          {
-            "agentId": 2,
-            "name": "Greg"
-          }
-        ],
-        "tasks": [
-          {
-            "id": 1,
-            "title": "Brand website Article",
-            "type": "Website",
-            "agent": "Greg",
-            "status": "Pending"
-          },
-          {
-            "id": 2,
-            "title": "Brand Twitter Post",
-            "type": "Twitter",
-            "agent": "John",
-            "status": "Completed"
-          },
-          {
-            "id": 3,
-            "title": "Brand Instagram Post",
-            "type": "Instagram",
-            "agent": "John",
-            "status": "Pending"
-          },
-          {
-            "id": 4,
-            "title": "Brand website Article 2",
-            "type": "Website",
-            "agent": "Greg",
-            "status": "Pending"
-          },
-          {
-            "id": 5,
-            "title": "Brand Twitter Post 2",
-            "type": "Twitter",
-            "agent": "John",
-            "status": "Waiting"
-          },
-          {
-            "id": 6,
-            "title": "Brand Instagram Post 2",
-            "type": "Instagram",
-            "agent": "John",
-            "status": "Waiting"
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "name": "New Landing Page Design",
-        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident.",
-        "metadesc": "Landing Page Design restructuring",
-        "startDate": "2023-08-18",
-        "endDate": "2023-08-19",
-        "status": "Delay",
-        "teamMembers": [
-          {
-            "agentId": 1,
-            "name": "John"
-          }
-        ],
-        "tasks": [
-          {
-            "id": 1,
-            "title": "Landing Page website article",
-            "type": "Website",
-            "agent": "John",
-            "status": "Completed"
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "name": "Email Marketting",
-        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident.",
-        "metadesc": "Create a comprehensive email marketting",
-        "startDate": "2023-08-25",
-        "endDate": "2023-08-26",
-        "status": "Pending",
-        "teamMembers": [
-          {
-            "agentId": 2,
-            "name": "Greg"
-          },
-          {
-            "agentId": 3,
-            "name": "Alex"
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "name": "App Landing Ui",
-        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident.",
-        "metadesc": "Creation of App Landing ui",
-        "startDate": "2023-08-30",
-        "endDate": "2023-09-26",
-        "status": "Pending",
-        "teamMembers": [
-          {
-            "agentId": 1,
-            "name": "John"
-          },
-          {
-            "agentId": 4,
-            "name": "Dave"
-          },
-          {
-            "agentId": 5,
-            "name": "Amanda"
-          },
-          {
-            "agentId": 2,
-            "name": "Greg"
-          }
-        ]
-      }
-    ],
-    "agents" : [
-      {
-        "agentId": 1,
-        "name": "John",
-        "email": "john@email.com",
-        "agentType": "Human",
-        "skills": ["Php","Java","Ruby"],
-        "projects": 2
-      },
-      {
+  "projects": [
+    {
+      "id": 1,
+      "name": "Brand Logo Design",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident.",
+      "metadesc": "Design a logo with brand colors",
+      "startDate": "2023-08-18",
+      "endDate": "2023-08-19",
+      "status": "Completed",
+      "teamMembers": [
+        {
+          "agentId": 1,
+          "name": "John"
+        },
+        {
           "agentId": 2,
-          "name": "Greg",
-          "email": "greg@email.com",
-          "agentType": "Human",
-          "skills": ["Html","Css","Javascript","Reactjs"],
-          "projects": 4
+          "name": "Greg"
+        }
+      ],
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Brand website Article",
+          "type": "Website",
+          "agent": "Greg",
+          "status": "Pending"
+        },
+        {
+          "id": 2,
+          "title": "Brand Twitter Post",
+          "type": "Twitter",
+          "agent": "John",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "title": "Brand Instagram Post",
+          "type": "Instagram",
+          "agent": "John",
+          "status": "Pending"
+        },
+        {
+          "id": 4,
+          "title": "Brand website Article 2",
+          "type": "Website",
+          "agent": "Greg",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "title": "Brand Twitter Post 2",
+          "type": "Twitter",
+          "agent": "John",
+          "status": "Waiting"
+        },
+        {
+          "id": 6,
+          "title": "Brand Instagram Post 2",
+          "type": "Instagram",
+          "agent": "John",
+          "status": "Waiting"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "New Landing Page Design",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident.",
+      "metadesc": "Landing Page Design restructuring",
+      "startDate": "2023-08-18",
+      "endDate": "2023-08-19",
+      "status": "Delay",
+      "teamMembers": [
+        {
+          "agentId": 1,
+          "name": "John"
+        }
+      ],
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Landing Page website article",
+          "type": "Website",
+          "agent": "John",
+          "status": "Completed"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Email Marketting",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident.",
+      "metadesc": "Create a comprehensive email marketting",
+      "startDate": "2023-08-25",
+      "endDate": "2023-08-26",
+      "status": "Pending",
+      "teamMembers": [
+        {
+          "agentId": 2,
+          "name": "Greg"
         },
         {
           "agentId": 3,
-          "name": "Alex",
-          "email": "alex@email.com",
-          "agentType": "Human",
-          "skills": ["Photoshop","Illustrator"],
-          "projects": 5
+          "name": "Alex"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "App Landing Ui",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quia debitis soluta voluptatem. Quod fugiat tempora beatae voluptatibus similique perferendis nulla libero, voluptates sunt. Praesentium fugit quia enim ipsum provident.",
+      "metadesc": "Creation of App Landing ui",
+      "startDate": "2023-08-30",
+      "endDate": "2023-09-26",
+      "status": "Pending",
+      "teamMembers": [
+        {
+          "agentId": 1,
+          "name": "John"
         },
         {
           "agentId": 4,
-          "name": "Dave",
-          "email": "dave@email.com",
-          "agentType": "Human",
-          "skills": ["Java","Ruby"],
-          "projects": 1
+          "name": "Dave"
         },
         {
           "agentId": 5,
-          "name": "Amanda",
-          "email": "amanda@email.com",
-          "agentType": "Human",
-          "skills": ["Java","Ruby","Css"],
-          "projects": 4
+          "name": "Amanda"
         },
         {
-          "agentId": 6,
-          "name": "Frank",
-          "email": "frank@email.com",
-          "agentType": "Human",
-          "skills": ["Reactjs","Javascript","Java"],
-          "projects": 0
+          "agentId": 2,
+          "name": "Greg"
         }
-    ]
+      ]
+    }
+  ],
+  "agents": [
+    {
+      "agentId": 1,
+      "name": "John",
+      "email": "john@email.com",
+      "agentType": "Human",
+      "skills": ["Php", "Java", "Ruby"],
+      "projects": 2
+    },
+    {
+      "agentId": 2,
+      "name": "Greg",
+      "email": "greg@email.com",
+      "agentType": "Human",
+      "skills": ["Html", "Css", "Javascript", "Reactjs"],
+      "projects": 4
+    },
+    {
+      "agentId": 3,
+      "name": "Alex",
+      "email": "alex@email.com",
+      "agentType": "Human",
+      "skills": ["Photoshop", "Illustrator"],
+      "projects": 5
+    },
+    {
+      "agentId": 4,
+      "name": "Dave",
+      "email": "dave@email.com",
+      "agentType": "Human",
+      "skills": ["Java", "Ruby"],
+      "projects": 1
+    },
+    {
+      "agentId": 5,
+      "name": "Amanda",
+      "email": "amanda@email.com",
+      "agentType": "Human",
+      "skills": ["Java", "Ruby", "Css"],
+      "projects": 4
+    },
+    {
+      "agentId": 6,
+      "name": "Frank",
+      "email": "frank@email.com",
+      "agentType": "Human",
+      "skills": ["Reactjs", "Javascript", "Java"],
+      "projects": 0
+    }
+  ],
+  "audience": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "role": "Product Manager",
+      "problems": "Lack of user engagement,Low conversion rates",
+      "pains": "Limited resources,Tight deadlines",
+      "jobs": "Improve user onboarding experience",
+      "motivation": "Increase user retention and satisfaction",
+      "trigger": "Received negative user feedback",
+      "barriers": "Lack of technical expertise,Budget constraints",
+      "context": "Working on a web-based SaaS product"
+    },
+    {
+      "id": 2,
+      "name": "Alice Johnson",
+      "role": "UX Designer",
+      "problems": "Inconsistent user interface,High bounce rates",
+      "pains": "Limited design resources,Communication challenges with developers",
+      "jobs": "Optimize the mobile app's navigation",
+      "motivation": "Enhance user experience and reduce user frustration",
+      "trigger": "Received negative app store reviews",
+      "barriers": "Technical constraints,Limited budget for user testing",
+      "context": "Working on a mobile app for an e-commerce platform"
+    },
+    {
+      "id": 3,
+      "name": "Eva Martinez",
+      "role": "Software Engineer",
+      "problems": "Frequent software crashes,High server response times",
+      "pains": "Resource-intensive codebase,Lack of automated testing",
+      "jobs": "Improve application performance",
+      "motivation": "Enhance user satisfaction and reduce support requests",
+      "trigger": "Received multiple customer complaints",
+      "barriers": "Legacy code integration,Limited server capacity",
+      "context": "Developing a web-based CRM software"
+    }
+  ]
 }

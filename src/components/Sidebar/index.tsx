@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import { RiArrowDownSLine } from 'react-icons/ri';
+import { BsFillPeopleFill } from 'react-icons/bs';
 import {
   BiBriefcaseAlt2,
   BiHomeCircle,
@@ -17,7 +18,8 @@ type MenuStates = {
 const Sidebar = () => {
   const [menuStates, setMenuStates] = useState<MenuStates>({
     projectsMenu: false,
-    usersMenu: false
+    usersMenu: false,
+    audienceMenu: false
   });
   const { sidebarCollapsed } = useSidebarContext();
   const handleMenuClick = (menuName: string) => {
@@ -41,7 +43,8 @@ const Sidebar = () => {
     if (sidebarCollapsed)
       setMenuStates({
         projectsMenu: false,
-        usersMenu: false
+        usersMenu: false,
+        audienceMenu: false
       });
   }, [sidebarCollapsed]);
 
@@ -116,6 +119,36 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink href="/users/create-user">Create User</NavLink>
+            </li>
+          </ul>
+        </li>
+        <li
+          className={`menuContent ${
+            menuStates.audienceMenu ? 'menuActive' : ''
+          }`}
+        >
+          <div
+            className="menuHeading"
+            onClick={() => handleMenuClick('audienceMenu')}
+          >
+            <NavLink href={''}>
+              <i>
+                <BsFillPeopleFill size={30} />
+              </i>
+              <span>Audience Persona</span>
+            </NavLink>
+            <i>
+              <RiArrowDownSLine size={20} className="menuArrow" />
+            </i>
+          </div>
+          <ul
+            className={`audienceMenu ${menuStates.audienceMenu ? 'show' : ''}`}
+          >
+            <li>
+              <NavLink href={'/audience'}>Persona List</NavLink>
+            </li>
+            <li>
+              <NavLink href="/audience/create-persona">Create Persona</NavLink>
             </li>
           </ul>
         </li>

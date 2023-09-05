@@ -4,12 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import TaskButton from '@/components/TaskButton';
+
 import { Project, Task } from '@/types/global';
-import { IoMdArrowDropdown } from 'react-icons/io';
 import { getProject } from '@/utils/apiUtils';
 
 import '../../projects.scss';
-import './tasks.scss';
 
 const page = async ({ params }: { params: { slug: number } }) => {
   const { slug } = params;
@@ -26,23 +26,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
         <div className="pageTitle">
           <h4>TASKS LIST</h4>
         </div>
-        <div className="createButton dropdown">
-          <div className="dropbtn">
-            Create Task
-            <IoMdArrowDropdown />
-          </div>
-          <div className="dropdown-content">
-            <Link href={`/projects/${slug}/tasks/create-task/`}>
-              Create Website Article
-            </Link>
-            <Link href={`/projects/${slug}/tasks/create-task`}>
-              Create Twitter Post
-            </Link>
-            <Link href={`/projects/${slug}/tasks/create-task`}>
-              Create Instagram Post
-            </Link>
-          </div>
-        </div>
+        <TaskButton params={params} />
       </div>
       <div className="section sectionContent">
         <table>
@@ -82,7 +66,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
                 </td>
                 <td>
                   <span
-                    className={`projectStatus ${
+                    className={`taskStatus ${
                       task.status === 'Completed'
                         ? `success`
                         : task.status === 'Pending'

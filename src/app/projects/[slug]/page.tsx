@@ -9,6 +9,7 @@ import { getAgents, getProject } from '@/utils/apiUtils';
 import { convertDate } from '@/utils/globalUtils';
 
 import './style.scss';
+import TaskButton from '@/components/TaskButton';
 
 const page = async ({ params }: { params: { slug: number } }) => {
   const { slug } = params;
@@ -109,81 +110,87 @@ const page = async ({ params }: { params: { slug: number } }) => {
           </div>
         </div>
       </div>
-      {tasks && (
-        <div className="section sectionTaskList">
-          <div className="card teamCard">
-            <div className="cardBody">
-              <div className="cardTitle">
-                <h5>Tasks List</h5>
-              </div>
-              <div className="cardContent">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Title</th>
-                      <th>Type</th>
-                      <th>Agent</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {tasks.map((task: Task) => (
-                      <tr key={task.id}>
-                        <td>
-                          <span>
-                            <Link href={`/projects/${task.id}`}>
-                              {task.title}
-                            </Link>
-                          </span>
-                        </td>
-                        <td>
-                          <span>{task.type}</span>
-                        </td>
 
-                        <td>
-                          <div className="userGroup">
-                            <div className="userAvatar">
-                              <Image
-                                src={`https://api.multiavatar.com/${task.agent}.svg`}
-                                width={32}
-                                height={32}
-                                alt="thumb"
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span
-                            className={`projectStatus ${
-                              task.status === 'Completed'
-                                ? `success`
-                                : task.status === 'Pending'
-                                ? `warning`
-                                : task.status === 'Waiting'
-                                ? `waiting`
-                                : `danger`
-                            }`}
-                          >
-                            {task.status}
-                          </span>
-                        </td>
+      <div className="section sectionTaskList">
+        <div className="card">
+          <div className="cardBody">
+            <div className="cardTitle taskCardTitle">
+              <h5>Tasks List</h5>
+              <TaskButton params={params} />
+            </div>
+            <div className="cardContent">
+              {tasks ? (
+                <>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Agent</th>
+                        <th>Status</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-                {project?.tasks?.length >= 3 && (
-                  <div className="showMore">
-                    <Link href={`/projects/${slug}/tasks`}>
-                      Show more
-                      <BiRightArrowAlt size={20} />
-                    </Link>
-                  </div>
-                )}
-              </div>
+                    </thead>
+                    <tbody>
+                      {tasks.map((task: Task) => (
+                        <tr key={task.id}>
+                          <td>
+                            <span>
+                              <Link href={`/projects/${task.id}`}>
+                                {task.title}
+                              </Link>
+                            </span>
+                          </td>
+                          <td>
+                            <span>{task.type}</span>
+                          </td>
+
+                          <td>
+                            <div className="userGroup">
+                              <div className="userAvatar">
+                                <Image
+                                  src={`https://api.multiavatar.com/${task.agent}.svg`}
+                                  width={32}
+                                  height={32}
+                                  alt="thumb"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <span
+                              className={`taskStatus ${
+                                task.status === 'Completed'
+                                  ? `success`
+                                  : task.status === 'Pending'
+                                  ? `warning`
+                                  : task.status === 'Waiting'
+                                  ? `waiting`
+                                  : `danger`
+                              }`}
+                            >
+                              {task.status}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  {project?.tasks?.length >= 3 && (
+                    <div className="showMore">
+                      <Link href={`/projects/${slug}/tasks`}>
+                        Show more
+                        <BiRightArrowAlt size={20} />
+                      </Link>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="noTasks">No tasks found.</div>
+              )}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };

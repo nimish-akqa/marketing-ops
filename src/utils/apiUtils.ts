@@ -39,3 +39,17 @@ export const getAgents = async () => {
     });
   return data;
 };
+
+export const getAudiencePersona = async () => {
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_JSON_SERVER_PATH}/audience/`,
+    {
+      cache: 'no-store'
+    }
+  )
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err.message);
+    });
+  return data;
+};

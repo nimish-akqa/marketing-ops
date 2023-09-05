@@ -4,7 +4,6 @@ import React, { FormEvent, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { Agent } from '@/types/global';
 
-import './projectform.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 
 interface ProjectFormProps {

@@ -7,7 +7,6 @@ import ActionDropDown from '@/components/ActionDropDown';
 import { Agent } from '@/types/global';
 import { getAgents } from '@/utils/apiUtils';
 
-
 import './agents.scss';
 
 const page = async () => {
@@ -67,7 +66,7 @@ const page = async () => {
                 <td>{agent.projects}</td>
                 <td>
                   <ActionDropDown
-                    class="projectOptionsDropdown"
+                    class="optionsDropdown"
                     optionId={agent.agentId}
                   />
                 </td>

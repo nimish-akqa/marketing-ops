@@ -76,7 +76,7 @@ const page = async () => {
                 </td>
                 <td>
                   <ActionDropDown
-                    class="projectOptionsDropdown"
+                    class="optionsDropdown"
                     optionId={project.id}
                   />
                 </td>

@@ -9,6 +9,8 @@ import SidebarContextProvider from './sidebar-context';
 import './globals.scss';
 import '../components/Header/header.scss';
 import '../components/Sidebar/sidebar.scss';
+import '../styles/form.scss';
+import '../styles/list.scss';
 import 'react-datepicker/dist/react-datepicker.min.css';
 
 const poppins = Poppins({ weight: ['400'], subsets: ['latin'] });

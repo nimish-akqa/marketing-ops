@@ -42,7 +42,7 @@ const ActionDropDown = (props: Props) => {
         </i>
       </Link>
       {openDropdownId === props.optionId && (
-        <div className="projectOptions">
+        <div className="options">
           <Link href={'#'}>
             <i>
               <BiSolidPencil color={'#34c38f'} />
