@@ -9,3 +9,9 @@
     font-size: 75%;
   }
 }
+
+@media (max-width: 576px) {
+  .skillGroup {
+    flex-wrap: wrap;
+  }
+}
