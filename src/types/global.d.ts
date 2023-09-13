@@ -17,7 +17,7 @@ export interface Project {
   tasks: Task[];
 }
 export interface Agent {
-  agentId: number;
+  id: number;
   name: string;
   email: string;
   agentType: string;
@@ -36,4 +36,10 @@ export interface AudiencePersona {
   trigger: string;
   barriers: string;
   context: string;
+}
+
+export interface ProjectUser {
+  id: number;
+  projectId: number;
+  agentId: number;
 }

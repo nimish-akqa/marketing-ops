@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { BiCalendar, BiCalendarCheck, BiRightArrowAlt } from 'react-icons/bi';
-import { Project, Agent, Task } from '@/types/global';
-import { getAgents, getProject } from '@/utils/apiUtils';
+import { Project, Agent, Task, ProjectUser } from '@/types/global';
+import { getAgents, getProject, getProjectUsers } from '@/utils/apiUtils';
 import { convertDate } from '@/utils/globalUtils';
 
 import './style.scss';
@@ -18,6 +18,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
   if (!Object.keys(project).length) {
     notFound();
   }
+  const projectUsers: ProjectUser[] = await getProjectUsers();
   const agents: Agent[] = await getAgents();
   const tasks: Task[] = project.tasks?.slice(0, 3);
 
@@ -62,48 +63,56 @@ const page = async ({ params }: { params: { slug: number } }) => {
         <div className="card teamCard">
           <div className="cardBody">
             <div className="cardTitle">
-              <h5>Team Members</h5>
+              <h5>Project Users</h5>
             </div>
             <div className="cardContent">
               <table>
                 <tbody>
-                  {project?.teamMembers &&
-                    project?.teamMembers.map((member) => (
-                      <tr key={member.agentId}>
-                        <td>
-                          <div className="userGroup">
-                            <div className="userAvatar">
-                              <Image
-                                src={`https://api.multiavatar.com/${member.agentId}.svg`}
-                                width={32}
-                                height={32}
-                                alt="thumb"
-                              />
+                  {projectUsers &&
+                    projectUsers
+                      ?.filter((pUser) => pUser.projectId === project.id)
+                      .map((data) => (
+                        <tr key={data.agentId}>
+                          <td>
+                            <div className="userGroup">
+                              <div className="userAvatar">
+                                <Image
+                                  src={`https://api.multiavatar.com/${data.agentId}.svg`}
+                                  width={32}
+                                  height={32}
+                                  alt="thumb"
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                        <td>
-                          <h5>{member.name}</h5>
-                        </td>
-                        <td>
-                          <div className="skillGroup">
-                            {agents &&
-                              agents
-                                .find(
-                                  (agent) => agent.agentId === member.agentId
-                                )
-                                ?.skills.map((skill) => (
-                                  <span
-                                    className={`skills success`}
-                                    key={skill}
-                                  >
-                                    {skill}
-                                  </span>
-                                ))}
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
+                          </td>
+                          <td>
+                            {agents && (
+                              <h5>
+                                {
+                                  agents?.find(
+                                    (agent) => agent.id === data.agentId
+                                  )?.name
+                                }
+                              </h5>
+                            )}
+                          </td>
+                          <td>
+                            <div className="skillGroup">
+                              {agents &&
+                                agents
+                                  .find((agent) => agent.id === data.agentId)
+                                  ?.skills.map((skill) => (
+                                    <span
+                                      className={`skills success`}
+                                      key={skill}
+                                    >
+                                      {skill}
+                                    </span>
+                                  ))}
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                 </tbody>
               </table>
             </div>
@@ -185,7 +194,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
                   )}
                 </>
               ) : (
-                <div className="noTasks">No tasks found.</div>
+                <div className="noData">No tasks found.</div>
               )}
             </div>
           </div>

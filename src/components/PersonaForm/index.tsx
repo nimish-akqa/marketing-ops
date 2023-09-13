@@ -102,17 +102,6 @@ const PersonaForm: React.FC = () => {
             </div>
           </div>
           <div className="formFieldRow">
-            <label htmlFor="name">Name</label>
-            <div>
-              <input
-                id="name"
-                type="text"
-                placeholder="Enter Name"
-                className="form-control"
-              />
-            </div>
-          </div>
-          <div className="formFieldRow">
             <label htmlFor="context">Context</label>
             <div>
               <input

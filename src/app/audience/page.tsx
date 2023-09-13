@@ -23,35 +23,39 @@ const page = async () => {
         </Link>
       </div>
       <div className="section sectionContent">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Role</th>
-              <th>Problem</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {audiencePersona.map((persona: AudiencePersona) => (
-              <tr key={persona.id}>
-                <td>
-                  <span>
-                    <Link href={``}>{persona.name}</Link>
-                  </span>
-                </td>
-                <td>{persona.role}</td>
-                <td>{persona.problems}</td>
-                <td>
-                  <ActionDropDown
-                    class="optionsDropdown"
-                    optionId={persona.id}
-                  />
-                </td>
+        {audiencePersona ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Problem</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {audiencePersona?.map((persona: AudiencePersona) => (
+                <tr key={persona.id}>
+                  <td>
+                    <span>
+                      <Link href={``}>{persona.name}</Link>
+                    </span>
+                  </td>
+                  <td>{persona.role}</td>
+                  <td>{persona.problems}</td>
+                  <td>
+                    <ActionDropDown
+                      class="optionsDropdown"
+                      optionId={persona.id}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="noData">No Data found.</div>
+        )}
       </div>
     </>
   );
