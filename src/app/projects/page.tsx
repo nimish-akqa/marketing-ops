@@ -66,18 +66,19 @@ const page = async () => {
                   </td>
                   <td>
                     <div className="userGroup">
-                      {projectUsers
-                        ?.filter((pUser) => pUser.projectId === project.id)
-                        .map((data) => (
-                          <div className="userAvatar" key={data.agentId}>
-                            <Image
-                              src={`https://api.multiavatar.com/${data.agentId}.svg`}
-                              width={32}
-                              height={32}
-                              alt="thumb"
-                            />
-                          </div>
-                        ))}
+                      {projectUsers &&
+                        projectUsers
+                          ?.filter((pUser) => pUser.projectId === project.id)
+                          .map((data) => (
+                            <div className="userAvatar" key={data.agentId}>
+                              <Image
+                                src={`https://api.multiavatar.com/${data.agentId}.svg`}
+                                width={32}
+                                height={32}
+                                alt="thumb"
+                              />
+                            </div>
+                          ))}
                     </div>
                   </td>
                   <td>
