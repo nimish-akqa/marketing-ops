@@ -3,13 +3,26 @@
   bottom: 0;
   box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
   margin-top: 0;
-  padding-top: 70px;
+  // padding-top: 70px;
   position: fixed;
   top: 0;
   left: 0;
   width: 250px;
   z-index: 1001;
 
+  .logo {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    a {
+      padding: 10px;
+      .logo-sm {
+        display: none;
+      }
+    }
+  }
   ul {
     list-style: none;
   }
@@ -89,6 +102,12 @@
   .sidebar {
     width: 70px !important;
     display: block;
+    .logo-sm {
+      display: block !important;
+    }
+    .logo-lg {
+      display: none !important;
+    }
     .menuTitle,
     .menuHeading > a > span {
       display: none;

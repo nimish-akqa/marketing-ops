@@ -6,8 +6,8 @@ import { notFound } from 'next/navigation';
 
 import TaskButton from '@/components/TaskButton';
 
-import { Project, Task } from '@/types/global';
-import { getProject } from '@/utils/apiUtils';
+import { Project, ProjectTask, Task } from '@/types/global';
+import { getProject, getProjectTasks, getTasks } from '@/utils/apiUtils';
 
 import '../../projects.scss';
 
@@ -18,7 +18,14 @@ const page = async ({ params }: { params: { slug: number } }) => {
   if (!Object.keys(project).length) {
     notFound();
   }
-  const tasks: Task[] = project.tasks;
+  const tasks: Task[] = await getTasks();
+  const projectTasks: ProjectTask[] = await getProjectTasks();
+  const projectTaskIds = projectTasks
+    .filter((pTask) => pTask.projectId === project.id)
+    .map((data) => data.taskId);
+  const filteredTasks = tasks?.filter((task: Task) =>
+    projectTaskIds.includes(task.id)
+  );
 
   return (
     <>
@@ -39,7 +46,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
             </tr>
           </thead>
           <tbody>
-            {tasks.map((task: Task) => (
+            {filteredTasks.map((task: Task) => (
               <tr key={task.id}>
                 <td>
                   <span>

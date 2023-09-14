@@ -16,9 +16,8 @@ const PersonaForm: React.FC = () => {
           <div className="formFieldRow">
             <label htmlFor="name">Name</label>
             <div>
-              <input
+              <textarea
                 id="name"
-                type="text"
                 placeholder="Enter Name"
                 className="form-control"
               />
@@ -27,9 +26,8 @@ const PersonaForm: React.FC = () => {
           <div className="formFieldRow">
             <label htmlFor="role">Role</label>
             <div>
-              <input
+              <textarea
                 id="role"
-                type="text"
                 placeholder="Enter Role"
                 className="form-control"
               />
@@ -38,9 +36,8 @@ const PersonaForm: React.FC = () => {
           <div className="formFieldRow">
             <label htmlFor="problems">Problems</label>
             <div>
-              <input
+              <textarea
                 id="problems"
-                type="text"
                 placeholder="Enter Problems"
                 className="form-control"
               />
@@ -49,9 +46,8 @@ const PersonaForm: React.FC = () => {
           <div className="formFieldRow">
             <label htmlFor="pains">Pains</label>
             <div>
-              <input
+              <textarea
                 id="pains"
-                type="text"
                 placeholder="Enter Pains"
                 className="form-control"
               />
@@ -60,9 +56,8 @@ const PersonaForm: React.FC = () => {
           <div className="formFieldRow">
             <label htmlFor="jobs">Jobs</label>
             <div>
-              <input
+              <textarea
                 id="jobs"
-                type="text"
                 placeholder="Enter Jobs to be done"
                 className="form-control"
               />
@@ -71,9 +66,8 @@ const PersonaForm: React.FC = () => {
           <div className="formFieldRow">
             <label htmlFor="motivation">Motivations</label>
             <div>
-              <input
+              <textarea
                 id="motivation"
-                type="text"
                 placeholder="Enter Motivations"
                 className="form-control"
               />
@@ -82,9 +76,8 @@ const PersonaForm: React.FC = () => {
           <div className="formFieldRow">
             <label htmlFor="trigger">Trigger</label>
             <div>
-              <input
+              <textarea
                 id="trigger"
-                type="text"
                 placeholder="Enter Triggers"
                 className="form-control"
               />
@@ -93,9 +86,8 @@ const PersonaForm: React.FC = () => {
           <div className="formFieldRow">
             <label htmlFor="barriers">Barriers</label>
             <div>
-              <input
+              <textarea
                 id="barriers"
-                type="text"
                 placeholder="Enter Barriers"
                 className="form-control"
               />
@@ -104,9 +96,8 @@ const PersonaForm: React.FC = () => {
           <div className="formFieldRow">
             <label htmlFor="context">Context</label>
             <div>
-              <input
+              <textarea
                 id="context"
-                type="text"
                 placeholder="Enter Context"
                 className="form-control"
               />

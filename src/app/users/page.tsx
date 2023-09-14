@@ -4,13 +4,14 @@ import Link from 'next/link';
 
 import { BsPlusLg } from 'react-icons/bs';
 import ActionDropDown from '@/components/ActionDropDown';
-import { Agent } from '@/types/global';
-import { getAgents } from '@/utils/apiUtils';
+import { Agent, ProjectUser } from '@/types/global';
+import { getAgents, getProjectUsers } from '@/utils/apiUtils';
 
 import './agents.scss';
 
 const page = async () => {
   const agents: Agent[] = await getAgents();
+  const projectUsers: ProjectUser[] = await getProjectUsers();
 
   return (
     <>
@@ -64,7 +65,13 @@ const page = async () => {
                       ))}
                     </div>
                   </td>
-                  <td>{agent.projects}</td>
+                  <td>
+                    {
+                      projectUsers?.filter(
+                        (pUser) => pUser.agentId === agent.id
+                      ).length
+                    }
+                  </td>
                   <td>
                     <ActionDropDown
                       class="optionsDropdown"

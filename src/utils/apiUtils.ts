@@ -67,3 +67,31 @@ export const getAudiencePersona = async () => {
     });
   return data;
 };
+
+export const getTasks = async () => {
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_JSON_SERVER_PATH}/tasks/`,
+    {
+      cache: 'no-store'
+    }
+  )
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err.message);
+    });
+  return data;
+};
+
+export const getProjectTasks = async () => {
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_JSON_SERVER_PATH}/project-tasks/`,
+    {
+      cache: 'no-store'
+    }
+  )
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err.message);
+    });
+  return data;
+};

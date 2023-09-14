@@ -11,6 +11,7 @@ import {
 
 import NavLink from './navLink';
 import { useSidebarContext } from '@/app/sidebar-context';
+import Link from 'next/link';
 
 type MenuStates = {
   [menu: string]: boolean;
@@ -50,6 +51,12 @@ const Sidebar = () => {
 
   return (
     <nav className="sidebar">
+      <div className="logo">
+        <Link href={'/'}>
+          <h1 className="logo-lg">Mosaic</h1>
+          <h1 className="logo-sm">M</h1>
+        </Link>
+      </div>
       <ul>
         <li className="menuTitle">Menu</li>
         <li className="menuContent">

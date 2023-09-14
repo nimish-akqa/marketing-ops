@@ -4,8 +4,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { BiCalendar, BiCalendarCheck, BiRightArrowAlt } from 'react-icons/bi';
-import { Project, Agent, Task, ProjectUser } from '@/types/global';
-import { getAgents, getProject, getProjectUsers } from '@/utils/apiUtils';
+import { Project, Agent, Task, ProjectUser, ProjectTask } from '@/types/global';
+import {
+  getAgents,
+  getProject,
+  getProjectTasks,
+  getProjectUsers,
+  getTasks
+} from '@/utils/apiUtils';
 import { convertDate } from '@/utils/globalUtils';
 
 import './style.scss';
@@ -20,7 +26,14 @@ const page = async ({ params }: { params: { slug: number } }) => {
   }
   const projectUsers: ProjectUser[] = await getProjectUsers();
   const agents: Agent[] = await getAgents();
-  const tasks: Task[] = project.tasks?.slice(0, 3);
+  const tasks: Task[] = await getTasks();
+  const projectTasks: ProjectTask[] = await getProjectTasks();
+  const projectTaskIds = projectTasks
+    .filter((pTask) => pTask.projectId === project.id)
+    .map((data) => data.taskId);
+  const filteredTasks = tasks
+    ?.filter((task: Task) => projectTaskIds.includes(task.id))
+    .slice(0, 3);
 
   return (
     <>
@@ -128,7 +141,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
               <TaskButton params={params} />
             </div>
             <div className="cardContent taskCardContent">
-              {tasks ? (
+              {filteredTasks.length ? (
                 <>
                   <table>
                     <thead>
@@ -140,7 +153,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {tasks.map((task: Task) => (
+                      {filteredTasks.map((task: Task) => (
                         <tr key={task.id}>
                           <td>
                             <span>
@@ -184,7 +197,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
                       ))}
                     </tbody>
                   </table>
-                  {project?.tasks?.length >= 3 && (
+                  {projectTaskIds?.length >= 3 && (
                     <div className="showMore">
                       <Link href={`/projects/${slug}/tasks`}>
                         Show more
