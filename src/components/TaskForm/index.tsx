@@ -23,20 +23,20 @@ const TaskForm: React.FC<TaskFormProps> = async ({ platform, projectId }) => {
     ?.filter((pUser) => pUser.projectId === projectId)
     .map((data) => data.agentId);
 
-  const fileredAgents = agents.filter((agent) =>
+  const filteredAgents = agents.filter((agent) =>
     filteredProjectUsers.includes(agent.id)
   );
 
   const component =
     platform == 'instagram' ? (
-      <Instagram />
+      <Instagram filteredAgents={filteredAgents} />
     ) : platform == 'website' ? (
       <Website
         audiencePersona={audiencePersona}
-        fileredAgents={fileredAgents}
+        filteredAgents={filteredAgents}
       />
     ) : platform == 'x' ? (
-      <X />
+      <X filteredAgents={filteredAgents} />
     ) : (
       notFound()
     );

@@ -2,17 +2,18 @@
 import React, { FormEvent, useState } from 'react';
 
 import { Agent, AudiencePersona } from '@/types/global';
-import { addJob } from '@/app/api/queue';
+import { WebsiteForm } from '@/types/taskform';
+import { handleTaskFormSubmit, handleTaskInputChange } from '@/utils/formUtils';
 
-interface AudiencePersonaList {
+interface WebsiteFormProps {
   audiencePersona: AudiencePersona[];
-  fileredAgents: Agent[];
+  filteredAgents: Agent[];
 }
-const Website: React.FC<AudiencePersonaList> = ({
+const Website: React.FC<WebsiteFormProps> = ({
   audiencePersona,
-  fileredAgents
+  filteredAgents
 }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<WebsiteForm>({
     assignee: '',
     topic: '',
     subtopic: '',
@@ -22,35 +23,14 @@ const Website: React.FC<AudiencePersonaList> = ({
     seoList: ''
   });
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    alert(JSON.stringify(formData));
-    try {
-      const apiUrl = '/api/tasks';
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Job created:', data.job);
-      } else {
-        console.error('Job creation failed');
-      }
-    } catch (error) {
-      console.error('An error occurred:', error);
-    }
-  };
-
   return (
     <div className="section formContainerCard">
       <div className="containerBody">
         <div className="cardTitle">Create Website Article</div>
-        <form onSubmit={handleSubmit}>
+        <form
+          name="website"
+          onSubmit={handleTaskFormSubmit(formData, 'websiteContentBrief')}
+        >
           <div className="formFieldRow">
             <label htmlFor="assignee">Assignee</label>
             <div>
@@ -59,14 +39,12 @@ const Website: React.FC<AudiencePersonaList> = ({
                 id="assignee"
                 className="form-control"
                 value={formData.assignee}
-                onChange={(e) =>
-                  setFormData({ ...formData, assignee: e.target.value })
-                }
+                onChange={handleTaskInputChange(formData, setFormData)}
                 required
               >
                 <option value="">Select an assignee</option>
-                {fileredAgents &&
-                  fileredAgents?.map((agent) => (
+                {filteredAgents &&
+                  filteredAgents?.map((agent) => (
                     <option value={agent.id} key={agent.id}>
                       {agent.name}
                     </option>
@@ -78,15 +56,14 @@ const Website: React.FC<AudiencePersonaList> = ({
             <label htmlFor="topic">Topic</label>
             <div>
               <input
+                name="topic"
                 id="topic"
                 type="text"
                 placeholder="Enter Topic"
                 className="form-control"
                 required
                 value={formData.topic}
-                onChange={(e) =>
-                  setFormData({ ...formData, topic: e.target.value })
-                }
+                onChange={handleTaskInputChange(formData, setFormData)}
               />
             </div>
           </div>
@@ -95,14 +72,13 @@ const Website: React.FC<AudiencePersonaList> = ({
             <label htmlFor="subtopic">List of sub topics</label>
             <div>
               <textarea
+                name="subtopic"
                 id="subtopic"
                 placeholder="Enter list of subtopics"
                 className="form-control"
                 required
                 value={formData.subtopic}
-                onChange={(e) =>
-                  setFormData({ ...formData, subtopic: e.target.value })
-                }
+                onChange={handleTaskInputChange(formData, setFormData)}
               />
             </div>
           </div>
@@ -110,15 +86,14 @@ const Website: React.FC<AudiencePersonaList> = ({
             <label htmlFor="numberOfWords">No. of words</label>
             <div>
               <input
+                name="numberOfWords"
                 id="numberOfWords"
                 type="number"
                 placeholder="Enter No. of words"
                 className="form-control"
                 required
                 value={formData.numberOfWords}
-                onChange={(e) =>
-                  setFormData({ ...formData, numberOfWords: e.target.value })
-                }
+                onChange={handleTaskInputChange(formData, setFormData)}
               />
             </div>
           </div>
@@ -131,9 +106,7 @@ const Website: React.FC<AudiencePersonaList> = ({
                 className="form-control"
                 required
                 value={formData.audiencePersona}
-                onChange={(e) =>
-                  setFormData({ ...formData, audiencePersona: e.target.value })
-                }
+                onChange={handleTaskInputChange(formData, setFormData)}
               >
                 <option value="">Select audience persona</option>
                 {audiencePersona &&
@@ -149,15 +122,14 @@ const Website: React.FC<AudiencePersonaList> = ({
             <label htmlFor="toneVoice">Tone of voice</label>
             <div>
               <input
+                name="toneVoice"
                 id="toneVoice"
                 type="text"
                 placeholder="Enter tone of voice"
                 className="form-control"
                 required
                 value={formData.toneVoice}
-                onChange={(e) =>
-                  setFormData({ ...formData, toneVoice: e.target.value })
-                }
+                onChange={handleTaskInputChange(formData, setFormData)}
               />
             </div>
           </div>
@@ -165,15 +137,14 @@ const Website: React.FC<AudiencePersonaList> = ({
             <label htmlFor="seoList">List of SEO keywords / phrases</label>
             <div>
               <input
+                name="seoList"
                 id="seoList"
                 type="text"
                 placeholder="Enter SEO keywords or phrases"
                 className="form-control"
                 required
                 value={formData.seoList}
-                onChange={(e) =>
-                  setFormData({ ...formData, seoList: e.target.value })
-                }
+                onChange={handleTaskInputChange(formData, setFormData)}
               />
             </div>
           </div>

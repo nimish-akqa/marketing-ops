@@ -16,8 +16,8 @@ import 'react-datepicker/dist/react-datepicker.min.css';
 const poppins = Poppins({ weight: ['400'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'PMS',
-  description: 'Marketting Ops PMS'
+  title: 'Mosaic',
+  description: 'Marketting Ops Mosaic'
 };
 
 export default function RootLayout({

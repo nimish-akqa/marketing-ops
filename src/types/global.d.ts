@@ -26,6 +26,12 @@ export interface AudiencePersona {
   barriers: string;
   context: string;
 }
+
+interface AudiencePersonaAgentList {
+  audiencePersona?: AudiencePersona[];
+  filteredAgents?: Agent[];
+}
+
 export interface Task {
   id: number;
   title: string;
