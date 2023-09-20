@@ -5,6 +5,8 @@ import { Agent, AudiencePersona } from '@/types/global';
 import { WebsiteForm } from '@/types/taskform';
 import { handleTaskFormSubmit, handleTaskInputChange } from '@/utils/formUtils';
 
+import { websiteFormSampleData } from './sampleFormData';
+
 interface WebsiteFormProps {
   audiencePersona: AudiencePersona[];
   filteredAgents: Agent[];
@@ -16,11 +18,11 @@ const Website: React.FC<WebsiteFormProps> = ({
   const [formData, setFormData] = useState<WebsiteForm>({
     assignee: '',
     topic: '',
-    subtopic: '',
-    numberOfWords: '',
+    subTopicsCSV: '',
+    wordCount: '',
     audiencePersona: '',
-    toneVoice: '',
-    seoList: ''
+    toneOfVoice: '',
+    seoKeywordsCSV: ''
   });
 
   return (
@@ -69,30 +71,30 @@ const Website: React.FC<WebsiteFormProps> = ({
           </div>
 
           <div className="formFieldRow">
-            <label htmlFor="subtopic">List of sub topics</label>
+            <label htmlFor="subTopicsCSV">List of sub topics</label>
             <div>
               <textarea
-                name="subtopic"
-                id="subtopic"
+                name="subTopicsCSV"
+                id="subTopicsCSV"
                 placeholder="Enter list of subtopics"
                 className="form-control"
                 required
-                value={formData.subtopic}
+                value={formData.subTopicsCSV}
                 onChange={handleTaskInputChange(formData, setFormData)}
               />
             </div>
           </div>
           <div className="formFieldRow">
-            <label htmlFor="numberOfWords">No. of words</label>
+            <label htmlFor="wordCount">No. of words</label>
             <div>
               <input
-                name="numberOfWords"
-                id="numberOfWords"
+                name="wordCount"
+                id="wordCount"
                 type="number"
                 placeholder="Enter No. of words"
                 className="form-control"
                 required
-                value={formData.numberOfWords}
+                value={formData.wordCount}
                 onChange={handleTaskInputChange(formData, setFormData)}
               />
             </div>
@@ -100,7 +102,7 @@ const Website: React.FC<WebsiteFormProps> = ({
           <div className="formFieldRow">
             <label htmlFor="audiencePersona">Audience Persona</label>
             <div>
-              <select
+              {/* <select
                 name="audiencePersona"
                 id="audiencePersona"
                 className="form-control"
@@ -115,43 +117,65 @@ const Website: React.FC<WebsiteFormProps> = ({
                       {persona.name}
                     </option>
                   ))}
-              </select>
-            </div>
-          </div>
-          <div className="formFieldRow">
-            <label htmlFor="toneVoice">Tone of voice</label>
-            <div>
+              </select> */}
               <input
-                name="toneVoice"
-                id="toneVoice"
-                type="text"
-                placeholder="Enter tone of voice"
+                name="audiencePersona"
+                id="audiencePersona"
                 className="form-control"
+                placeholder="Enter Audience Persona"
                 required
-                value={formData.toneVoice}
+                value={formData.audiencePersona}
                 onChange={handleTaskInputChange(formData, setFormData)}
               />
             </div>
           </div>
           <div className="formFieldRow">
-            <label htmlFor="seoList">List of SEO keywords / phrases</label>
+            <label htmlFor="toneOfVoice">Tone of voice</label>
             <div>
               <input
-                name="seoList"
-                id="seoList"
+                name="toneOfVoice"
+                id="toneOfVoice"
+                type="text"
+                placeholder="Enter tone of voice"
+                className="form-control"
+                required
+                value={formData.toneOfVoice}
+                onChange={handleTaskInputChange(formData, setFormData)}
+              />
+            </div>
+          </div>
+          <div className="formFieldRow">
+            <label htmlFor="seoKeywordsCSV">
+              List of SEO keywords / phrases
+            </label>
+            <div>
+              <input
+                name="seoKeywordsCSV"
+                id="seoKeywordsCSV"
                 type="text"
                 placeholder="Enter SEO keywords or phrases"
                 className="form-control"
                 required
-                value={formData.seoList}
+                value={formData.seoKeywordsCSV}
                 onChange={handleTaskInputChange(formData, setFormData)}
               />
             </div>
           </div>
           <div className="formFieldRow buttonContainer">
-            <div>
+            <div style={{ display: 'flex', gap: 5 }}>
               <button type="submit" className="submitButton">
                 Create Task
+              </button>
+              <button
+                type="button"
+                className="submitButton"
+                onClick={() =>
+                  setFormData(
+                    websiteFormSampleData[Math.floor(Math.random() * 3)]
+                  )
+                }
+              >
+                Auto Fill
               </button>
             </div>
           </div>

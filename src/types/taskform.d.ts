@@ -1,16 +1,16 @@
 export interface InstagramForm {
   assignee: string;
   summary: string;
-  tagList: string;
+  tagsCSV: string;
 }
 export interface WebsiteForm {
   assignee: string;
   topic: string;
-  subtopic: string;
-  numberOfWords: string;
+  subTopicsCSV: string;
+  wordCount: string;
   audiencePersona: string;
-  toneVoice: string;
-  seoList: string;
+  toneOfVoice: string;
+  seoKeywordsCSV: string;
 }
 export interface XForm {
   assignee: string;

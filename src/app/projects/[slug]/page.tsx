@@ -157,7 +157,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
                         <tr key={task.id}>
                           <td>
                             <span>
-                              <Link href={`/projects/${task.id}`}>
+                              <Link href={`/projects/${slug}/tasks/${task.id}`}>
                                 {task.title}
                               </Link>
                             </span>

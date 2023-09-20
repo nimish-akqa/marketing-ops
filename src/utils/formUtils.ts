@@ -4,7 +4,7 @@ export const handleTaskFormSubmit =
   <T>(formData: T, jobName: string) =>
   async (e: FormEvent) => {
     e.preventDefault();
-    alert(JSON.stringify(formData));
+    console.log('Data submitted from form: ', JSON.stringify(formData));
     try {
       const apiUrl = `/api/tasks?jobName=${jobName}`;
       const response = await fetch(apiUrl, {

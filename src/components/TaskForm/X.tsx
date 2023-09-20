@@ -5,6 +5,7 @@ import { Agent } from '@/types/global';
 import { XForm } from '@/types/taskform';
 
 import { handleTaskFormSubmit, handleTaskInputChange } from '@/utils/formUtils';
+import { xFormSampleData } from './sampleFormData';
 interface XFormProps {
   filteredAgents: Agent[];
 }
@@ -43,10 +44,11 @@ const X: React.FC<XFormProps> = ({ filteredAgents }) => {
           <div className="formFieldRow">
             <label htmlFor="topic">Topic</label>
             <div>
-              <textarea
+              <input
                 name="topic"
                 id="topic"
-                placeholder="Enter summary of image"
+                type="text"
+                placeholder="Enter Topic"
                 className="form-control"
                 required
                 value={formData.topic}
@@ -55,9 +57,18 @@ const X: React.FC<XFormProps> = ({ filteredAgents }) => {
             </div>
           </div>
           <div className="formFieldRow buttonContainer">
-            <div>
+            <div style={{ display: 'flex', gap: 5 }}>
               <button type="submit" className="submitButton">
                 Create Task
+              </button>
+              <button
+                type="button"
+                className="submitButton"
+                onClick={() =>
+                  setFormData(xFormSampleData[Math.floor(Math.random() * 3)])
+                }
+              >
+                Auto Fill
               </button>
             </div>
           </div>

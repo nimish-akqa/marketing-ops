@@ -11,7 +11,7 @@ const Instagram: React.FC<InstagramFormProps> = ({ filteredAgents }) => {
   const [formData, setFormData] = useState<InstagramForm>({
     assignee: '',
     summary: '',
-    tagList: ''
+    tagsCSV: ''
   });
 
   return (
@@ -58,15 +58,15 @@ const Instagram: React.FC<InstagramFormProps> = ({ filteredAgents }) => {
             </div>
           </div>
           <div className="formFieldRow">
-            <label htmlFor="tagList">List of tags</label>
+            <label htmlFor="tagsCSV">List of tags</label>
             <div>
               <input
-                name="tagList"
-                id="tagList"
+                name="tagsCSV"
+                id="tagsCSV"
                 type="text"
                 placeholder="Enter Tags"
                 className="form-control"
-                value={formData.tagList}
+                value={formData.tagsCSV}
                 onChange={handleTaskInputChange(formData, setFormData)}
               />
             </div>
