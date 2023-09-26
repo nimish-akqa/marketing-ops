@@ -1,0 +1,94 @@
+@import './mixins';
+
+.pageContent {
+  .pageTitle {
+    padding: 20px 0px;
+  }
+  .section {
+    table {
+      padding: 10px 0px;
+      border-spacing: 0px 12px;
+      width: 100%;
+      tr {
+        font-size: 14px;
+        background-color: #fff;
+        td,
+        th {
+          padding: 0.75rem;
+          text-align: inherit;
+          span {
+            font-weight: 500;
+          }
+        }
+        p {
+          font-size: 13px;
+          color: #74788d;
+        }
+        .optionsDropdown {
+          position: relative;
+          i {
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 0.25rem;
+            vertical-align: middle;
+          }
+
+          .options {
+            // display: none;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #fff;
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+            padding: 0.5rem 0;
+            border-radius: 0.25rem;
+            text-align: left;
+            min-width: 10rem;
+            right: 0;
+            left: auto;
+            z-index: 1000;
+            animation-name: optionsSlide;
+            animation-duration: 0.3s;
+            animation-fill-mode: both;
+            a {
+              padding: 0.35rem 1.5rem;
+              &:hover {
+                background-color: #f8f9fa;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .sectionContent {
+    overflow-x: auto;
+  }
+  .createButton {
+    @include button;
+  }
+}
+
+.success {
+  background-color: #34c38f;
+}
+.warning {
+  background-color: #f1b44c;
+}
+.danger {
+  background-color: #f46a6a;
+}
+.waiting {
+  background-color: #6c757d;
+  color: #74788d;
+}
+
+@keyframes optionsSlide {
+  100% {
+    transform: translateY(0px);
+  }
+  0% {
+    transform: translateY(10px);
+  }
+}

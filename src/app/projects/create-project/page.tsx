@@ -1,32 +1,21 @@
-import ProjectForm from '@/components/ProjectForm';
 import React from 'react';
-import { Agent } from '@/types/global';
+import ProjectForm from '@/components/ProjectForm';
 
-const getAgents = async () => {
-    const data = await fetch(
-        `https://json-server-vercel-nimish-akqa.vercel.app/agents/`,
-        {
-            cache: 'no-store'
-        }
-    )
-        .then(res => res.json())
-        .catch(err => {
-            console.log(err.message);
-        });
-    return data;
-};
+import { Agent } from '@/types/global';
+import { getAgents } from '@/utils/apiUtils';
+
 const page = async () => {
-    const agents: Agent[] = await getAgents();
-    return (
-        <>
-            <div className="section sectionHeader">
-                <div className="pageTitle">
-                    <h4>CREATE NEW </h4>
-                </div>
-            </div>
-            <ProjectForm agents={agents} />
-        </>
-    );
+  const agents: Agent[] = await getAgents();
+  return (
+    <>
+      <div className="section sectionHeader">
+        <div className="pageTitle">
+          <h4>CREATE NEW </h4>
+        </div>
+      </div>
+      <ProjectForm agents={agents} />
+    </>
+  );
 };
 
 export default page;

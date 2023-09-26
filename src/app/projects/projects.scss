@@ -1,115 +1,30 @@
-@import '../../app/mixins';
-
 .pageContent {
-    .pageTitle {
-        padding: 20px 0px;
+  .section {
+    .projectStatus,
+    .taskStatus {
+      color: #fff;
+      border-radius: 0.25rem;
+      // padding: .25rem .4rem;
+      padding: 0.1rem 0.3rem;
+      font-size: 75%;
     }
-    .section {
-        table {
-            padding: 10px 0px;
-            border-spacing: 0px 12px;
-            width: 100%;
-            tr {
-                font-size: 14px;
-                background-color: #fff;
-                td,
-                th {
-                    padding: 0.75rem;
-                    text-align: inherit;
-                    span {
-                        font-weight: 500;
-                    }
-                    .projectStatus {
-                        color: #fff;
-                        border-radius: 0.25rem;
-                        // padding: .25rem .4rem;
-                        padding: 0.1rem 0.3rem;
-                        font-size: 75%;
-                    }
-                }
-                p {
-                    font-size: 13px;
-                    color: #74788d;
-                }
-                .userGroup {
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: center;
-                }
-                .userGroup > .userAvatar {
-                    max-height: 36px;
-                    margin: 4px 0px 4px -6px !important;
-                }
-                .userAvatar {
-                    border: 2px solid #fff;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    transition: all 0.2s;
-                    &:hover {
-                        transform: translateY(-2px);
-                    }
-                }
-                .projectOptionsDropdown {
-                    position: relative;
-                    i {
-                        cursor: pointer;
-                        font-size: 16px;
-                        margin-right: 0.25rem;
-                        vertical-align: middle;
-                    }
-
-                    .projectOptions {
-                        // display: none;
-                        position: absolute;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        background-color: #fff;
-                        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-                        padding: 0.5rem 0;
-                        border-radius: 0.25rem;
-                        text-align: left;
-                        min-width: 10rem;
-                        right: 0;
-                        left: auto;
-                        z-index: 1000;
-                        animation-name: projectOptionsSlide;
-                        animation-duration: 0.3s;
-                        animation-fill-mode: both;
-                        a {
-                            padding: 0.35rem 1.5rem;
-                            &:hover {
-                                background-color: #f8f9fa;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    .userGroup {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
     }
-    .sectionContent {
-        overflow-x: auto;
+    .userGroup > .userAvatar {
+      max-height: 36px;
+      margin: 4px 0px 4px -6px !important;
     }
-    .createButton {
-        @include button;
+    .userAvatar {
+      border: 2px solid #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        transform: translateY(-2px);
+      }
     }
-}
-
-.success {
-    background-color: #34c38f;
-}
-.warning {
-    background-color: #f1b44c;
-}
-.danger {
-    background-color: #f46a6a;
-}
-
-@keyframes projectOptionsSlide {
-    100% {
-        transform: translateY(0px);
-    }
-    0% {
-        transform: translateY(10px);
-    }
+  }
 }

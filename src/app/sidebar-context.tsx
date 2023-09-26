@@ -2,31 +2,29 @@
 import { createContext, useContext, useState } from 'react';
 
 type SidebarContextValueType = {
-    sidebarCollapsed: boolean;
-    setSidebarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
+  sidebarCollapsed: boolean;
+  setSidebarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const initialState: SidebarContextValueType = {
-    sidebarCollapsed: false,
-    setSidebarCollapsed: () => null
+  sidebarCollapsed: false,
+  setSidebarCollapsed: () => null
 };
 
 const SidebarContext = createContext<SidebarContextValueType>(initialState);
 
 export default function SidebarContextProvider({
-    children
+  children
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(false);
-    const value: SidebarContextValueType = {
-        sidebarCollapsed,
-        setSidebarCollapsed
-    };
+  const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(false);
+  const value: SidebarContextValueType = {
+    sidebarCollapsed,
+    setSidebarCollapsed
+  };
 
-    return (
-        <SidebarContext.Provider value={value}>
-            {children}
-        </SidebarContext.Provider>
-    );
+  return (
+    <SidebarContext.Provider value={value}>{children}</SidebarContext.Provider>
+  );
 }
 export const useSidebarContext = () => useContext(SidebarContext);
