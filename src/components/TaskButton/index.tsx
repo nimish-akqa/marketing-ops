@@ -5,8 +5,8 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 
 import './taskButton.scss';
 
-const TaskButton = ({ params }: { params: { slug: number } }) => {
-  const { slug } = params;
+const TaskButton = ({ params }: { params: { projectId: number } }) => {
+  const { projectId } = params;
   const [dropDownClicked, setDropDownClicked] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -43,7 +43,7 @@ const TaskButton = ({ params }: { params: { slug: number } }) => {
       <div className={`dropdownContent ${dropDownClicked ? 'show' : ''}`}>
         <Link
           href={{
-            pathname: `/projects/${slug}/tasks/create-task/`,
+            pathname: `/projects/${projectId}/create-task/`,
             query: { task: 'website' }
           }}
         >
@@ -51,15 +51,15 @@ const TaskButton = ({ params }: { params: { slug: number } }) => {
         </Link>
         <Link
           href={{
-            pathname: `/projects/${slug}/tasks/create-task/`,
-            query: { task: 'x' }
+            pathname: `/projects/${projectId}/create-task/`,
+            query: { task: 'twitter' }
           }}
         >
-          Create X Post
+          Create Twitter Post
         </Link>
         <Link
           href={{
-            pathname: `/projects/${slug}/tasks/create-task/`,
+            pathname: `/projects/${projectId}/create-task/`,
             query: { task: 'instagram' }
           }}
         >

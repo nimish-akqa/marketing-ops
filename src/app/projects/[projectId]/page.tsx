@@ -17,9 +17,9 @@ import { convertDate } from '@/utils/globalUtils';
 import './style.scss';
 import TaskButton from '@/components/TaskButton';
 
-const page = async ({ params }: { params: { slug: number } }) => {
-  const { slug } = params;
-  const project: Project = await getProject(slug);
+const page = async ({ params }: { params: { projectId: number } }) => {
+  const { projectId } = params;
+  const project: Project = await getProject(projectId);
 
   if (!Object.keys(project).length) {
     notFound();
@@ -47,7 +47,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
           <div className="cardBody">
             <div className="cardTitle projectTitle">
               <h5>{project?.name}</h5>
-              <p>{project?.metadesc}</p>
+              {/* <p>{project?.metadesc}</p> */}
             </div>
             {/* <div className="cardContent"> */}
             <div className="projectDetails">
@@ -157,8 +157,8 @@ const page = async ({ params }: { params: { slug: number } }) => {
                         <tr key={task.id}>
                           <td>
                             <span>
-                              <Link href={`/projects/${slug}/tasks/${task.id}`}>
-                                {task.title}
+                              <Link href={`/tasks/${task.id}`}>
+                                {task.topic}
                               </Link>
                             </span>
                           </td>
@@ -197,9 +197,9 @@ const page = async ({ params }: { params: { slug: number } }) => {
                       ))}
                     </tbody>
                   </table>
-                  {projectTaskIds?.length >= 3 && (
+                  {projectTaskIds?.length > 3 && (
                     <div className="showMore">
-                      <Link href={`/projects/${slug}/tasks`}>
+                      <Link href={`/projects/${projectId}/tasks`}>
                         Show more
                         <BiRightArrowAlt size={20} />
                       </Link>

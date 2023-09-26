@@ -47,7 +47,7 @@ const page = async () => {
                         {project.name}
                       </Link>
                     </span>
-                    <p>{project.metadesc}</p>
+                    {/* <p>{project.metadesc}</p> */}
                   </td>
                   <td>{convertDate(project.startDate)}</td>
                   <td>{convertDate(project.endDate)}</td>

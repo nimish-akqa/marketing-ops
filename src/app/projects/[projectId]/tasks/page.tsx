@@ -11,9 +11,9 @@ import { getProject, getProjectTasks, getTasks } from '@/utils/apiUtils';
 
 import '../../projects.scss';
 
-const page = async ({ params }: { params: { slug: number } }) => {
-  const { slug } = params;
-  const project: Project = await getProject(slug);
+const page = async ({ params }: { params: { projectId: number } }) => {
+  const { projectId } = params;
+  const project: Project = await getProject(projectId);
 
   if (!Object.keys(project).length) {
     notFound();
@@ -50,9 +50,7 @@ const page = async ({ params }: { params: { slug: number } }) => {
               <tr key={task.id}>
                 <td>
                   <span>
-                    <Link href={`/projects/${slug}/tasks/${task.id}`}>
-                      {task.title}
-                    </Link>
+                    <Link href={`/tasks/${task.id}`}>{task.topic}</Link>
                   </span>
                 </td>
                 <td>

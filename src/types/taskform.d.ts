@@ -12,7 +12,11 @@ export interface WebsiteForm {
   toneOfVoice: string;
   seoKeywordsCSV: string;
 }
-export interface XForm {
+export interface TwitterForm {
   assignee: string;
   topic: string;
+}
+export interface TaskFormProps {
+  platform: 'instagram' | 'website' | 'twitter';
+  projectId: number;
 }

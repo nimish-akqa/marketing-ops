@@ -1,46 +1,42 @@
 import React, { MenuHTMLAttributes } from 'react';
 import Instagram from './Instagram';
 import Website from './Website';
-import X from './X';
+import Twitter from './Twitter';
+
 import { Agent, AudiencePersona, ProjectUser } from '@/types/global';
+import { TaskFormProps } from '@/types/taskform';
+
 import {
   getAgents,
   getAudiencePersona,
   getProjectUsers
 } from '@/utils/apiUtils';
-import { notFound } from 'next/navigation';
 
-interface TaskFormProps {
-  platform: string | undefined;
-  projectId: number;
-}
-
-const TaskForm: React.FC<TaskFormProps> = async ({ platform, projectId }) => {
+const TaskForm: React.FC<TaskFormProps> = async ({ ...props }) => {
   const audiencePersona: AudiencePersona[] = await getAudiencePersona();
   const agents: Agent[] = await getAgents();
   const projectUsers: ProjectUser[] = await getProjectUsers();
   const filteredProjectUsers: Number[] = projectUsers
-    ?.filter((pUser) => pUser.projectId === projectId)
+    ?.filter((pUser) => pUser.projectId === props.projectId)
     .map((data) => data.agentId);
 
   const filteredAgents = agents.filter((agent) =>
     filteredProjectUsers.includes(agent.id)
   );
 
-  const component =
-    platform == 'instagram' ? (
-      <Instagram filteredAgents={filteredAgents} />
-    ) : platform == 'website' ? (
+  const TASK_FORM = {
+    instagram: <Instagram filteredAgents={filteredAgents} {...props} />,
+    website: (
       <Website
         audiencePersona={audiencePersona}
         filteredAgents={filteredAgents}
+        {...props}
       />
-    ) : platform == 'x' ? (
-      <X filteredAgents={filteredAgents} />
-    ) : (
-      notFound()
-    );
-  return <>{component}</>;
+    ),
+    twitter: <Twitter filteredAgents={filteredAgents} {...props} />
+  };
+
+  return <>{TASK_FORM[props.platform]}</>;
 };
 
 export default TaskForm;

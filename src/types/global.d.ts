@@ -2,7 +2,6 @@ export interface Project {
   id: number;
   name: string;
   desc: string;
-  metadesc: string;
   startDate: string;
   endDate: string;
   status: string;
@@ -34,7 +33,12 @@ interface AudiencePersonaAgentList {
 
 export interface Task {
   id: number;
-  title: string;
+  topic: string;
+  subTopicsCSV?: string;
+  wordCount?: string;
+  audiencePersona?: string;
+  toneOfVoice?: string;
+  seoKeywordsCSV?: string;
   type: string;
   agent: number;
   status: string;
@@ -48,4 +52,41 @@ export interface ProjectTask {
   id: number;
   projectId: number;
   taskId: number;
+}
+
+interface TextDeliverable {
+  id: number;
+  type: 'text';
+  content: string; // ID of the associated task
+}
+
+interface ImageDeliverable {
+  id: number;
+  type: 'image';
+  path: string; // ID of the associated task
+}
+
+interface DocumentDeliverable {
+  id: number;
+  type: 'document';
+  path: string; // ID of the associated task
+}
+export type Deliverable =
+  | TextDeliverable
+  | ImageDeliverable
+  | DocumentDeliverable;
+
+export interface TaskDeliverable {
+  id: number;
+  taskId: number;
+  deliverableId: number;
+}
+
+export interface ProjectForm {
+  name: string;
+  desc: string;
+  startDate: Date | null;
+  endDate: Date | null;
+  status: string;
+  team: string[];
 }

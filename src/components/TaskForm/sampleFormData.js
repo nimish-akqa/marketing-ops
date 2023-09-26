@@ -32,17 +32,17 @@ export const websiteFormSampleData = [
     }
   ]
 
-  export const xFormSampleData = [
+  export const twitterFormSampleData = [
     {
       assignee: '1',
       topic: 'Twitter Trends'
     },
     {
-      assignee: '2',
+      assignee: '1',
       topic: 'Engaging Content'
     },
     {
-      assignee: '3',
+      assignee: '1',
       topic: 'Follower Growth Strategies'
     }
   ]

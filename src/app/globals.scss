@@ -19,6 +19,12 @@ a {
   text-decoration: none;
 }
 
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .mainContent {
   margin-left: 250px;
   padding: 70px 0px;
@@ -73,4 +79,10 @@ a {
   .pageFooter {
     left: 0px !important;
   }
+}
+
+.alert-success {
+  color: #154e39;
+  border-color: #aee7d2;
+  background-color: #34c38f40;
 }

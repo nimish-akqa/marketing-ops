@@ -2,12 +2,15 @@
 import React, { FormEvent, useState } from 'react';
 
 import { Agent } from '@/types/global';
-import { InstagramForm } from '@/types/taskform';
+import { InstagramForm, TaskFormProps } from '@/types/taskform';
 import { handleTaskFormSubmit, handleTaskInputChange } from '@/utils/formUtils';
-interface InstagramFormProps {
+interface InstagramFormProps extends TaskFormProps {
   filteredAgents: Agent[];
 }
-const Instagram: React.FC<InstagramFormProps> = ({ filteredAgents }) => {
+const Instagram: React.FC<InstagramFormProps> = ({
+  filteredAgents,
+  ...props
+}) => {
   const [formData, setFormData] = useState<InstagramForm>({
     assignee: '',
     summary: '',
@@ -18,10 +21,7 @@ const Instagram: React.FC<InstagramFormProps> = ({ filteredAgents }) => {
     <div className="section formContainerCard">
       <div className="containerBody">
         <div className="cardTitle">Create Instagram Post</div>
-        <form
-          name="instagram"
-          onSubmit={handleTaskFormSubmit(formData, 'instagramContentBrief')}
-        >
+        <form name="instagram" onSubmit={handleTaskFormSubmit(formData, props)}>
           <div className="formFieldRow">
             <label htmlFor="assignee">Assignee</label>
             <div>

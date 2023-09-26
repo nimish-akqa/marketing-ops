@@ -1,50 +1,78 @@
 'use client';
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 
 import DatePicker from 'react-datepicker';
-import { Agent } from '@/types/global';
+import { Agent, ProjectForm } from '@/types/global';
+import { handleProjectFormSubmit, handleInputChange } from '@/utils/formUtils';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 interface ProjectFormProps {
   agents: Agent[];
-  // onSubmit: () => void;
 }
 
 const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    // Implement form submission logic here
-    // onSubmit();
+  // const [startDate, setStartDate] = useState<Date | null>(new Date());
+  // const [endDate, setEndDate] = useState<Date | null>(new Date());
+  const [formData, setFormData] = useState<ProjectForm>({
+    name: '',
+    desc: '',
+    startDate: null,
+    endDate: null,
+    status: '',
+    team: []
+  });
+  const handleDateChange = (
+    date: Date | null,
+    field: 'startDate' | 'endDate'
+  ) => {
+    setFormData({
+      ...formData,
+      [field]: date
+    });
+  };
+  const handleMultiSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOptions = Array.from(e.target.selectedOptions).map(
+      (option) => option.value
+    );
+    setFormData({
+      ...formData,
+      team: selectedOptions // Assuming the name of the field is "team"
+    });
   };
 
   return (
     <div className="section formContainerCard">
       <div className="containerBody">
         <div className="cardTitle">Create New Project</div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleProjectFormSubmit(formData)}>
           <div className="formFieldRow">
-            <label htmlFor="projectName">Project Name</label>
+            <label htmlFor="name">Project Name</label>
             <div>
               <input
-                id="projectName"
+                name="name"
+                id="name"
                 type="text"
                 placeholder="Enter Project Name"
                 className="form-control"
+                value={formData.name}
+                onChange={handleInputChange(formData, setFormData)}
+                required
               />
             </div>
           </div>
 
           <div className="formFieldRow">
-            <label htmlFor="projectDesc">Project Description</label>
+            <label htmlFor="desc">Project Description</label>
             <div>
               <textarea
-                id="projectDesc"
+                name="desc"
+                id="desc"
                 placeholder="Enter Project Description"
                 className="form-control"
+                value={formData.desc}
+                onChange={handleInputChange(formData, setFormData)}
+                required
               />
             </div>
           </div>
@@ -52,9 +80,12 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
             <label htmlFor="startDate">Start Date</label>
             <div>
               <DatePicker
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                placeholderText={'Select start date'}
+                selected={formData.startDate}
+                onChange={(date) => handleDateChange(date, 'startDate')}
+                startDate={formData.startDate}
                 dateFormat="MM/dd/yyyy"
+                required
               />
             </div>
           </div>
@@ -62,16 +93,27 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
             <label htmlFor="endDate">End Date</label>
             <div>
               <DatePicker
-                selected={endDate}
-                onChange={(date) => setEndDate(date)}
+                placeholderText={'Select end date'}
+                selected={formData.endDate}
+                onChange={(date) => handleDateChange(date, 'endDate')}
                 dateFormat="MM/dd/yyyy"
+                minDate={formData.startDate}
+                required
               />
             </div>
           </div>
           <div className="formFieldRow">
             <label htmlFor="status">Status</label>
             <div>
-              <select name="status" id="status" className="form-control">
+              <select
+                name="status"
+                id="status"
+                className="form-control"
+                value={formData.status}
+                onChange={handleInputChange(formData, setFormData)}
+                required
+              >
+                <option value="">Select Status</option>
                 <option value="completed">Completed</option>
                 <option value="delay">Delay</option>
                 <option value="pending">Pending</option>
@@ -81,7 +123,14 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
           <div className="formFieldRow">
             <label htmlFor="team">Team Members</label>
             <div>
-              <select name="team" id="team" className="form-control" multiple>
+              <select
+                name="team"
+                id="team"
+                className="form-control"
+                multiple
+                onChange={handleMultiSelectChange}
+                value={formData.team}
+              >
                 {agents &&
                   agents.map((agent) => (
                     <option value={agent.id} key={agent.id}>

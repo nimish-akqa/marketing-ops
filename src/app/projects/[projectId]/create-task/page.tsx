@@ -6,12 +6,12 @@ const page = ({
   params,
   searchParams
 }: {
-  params: { slug: number };
-  searchParams?: { [key: string]: string };
+  params: { projectId: number };
+  searchParams?: { [key: string]: 'instagram' | 'website' | 'twitter' };
 }) => {
   const task = searchParams?.task;
 
-  if (!task) {
+  if (!task || !['instagram', 'website', 'twitter'].includes(task)) {
     notFound();
   }
 
@@ -22,7 +22,7 @@ const page = ({
           <h4>CREATE NEW TASK</h4>
         </div>
       </div>
-      <TaskForm platform={task} projectId={Number(params.slug)} />
+      <TaskForm platform={task} projectId={Number(params.projectId)} />
     </>
   );
 };

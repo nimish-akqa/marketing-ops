@@ -2,18 +2,19 @@
 import React, { FormEvent, useState } from 'react';
 
 import { Agent, AudiencePersona } from '@/types/global';
-import { WebsiteForm } from '@/types/taskform';
+import { TaskFormProps, WebsiteForm } from '@/types/taskform';
 import { handleTaskFormSubmit, handleTaskInputChange } from '@/utils/formUtils';
 
 import { websiteFormSampleData } from './sampleFormData';
 
-interface WebsiteFormProps {
+interface WebsiteFormProps extends TaskFormProps {
   audiencePersona: AudiencePersona[];
   filteredAgents: Agent[];
 }
 const Website: React.FC<WebsiteFormProps> = ({
   audiencePersona,
-  filteredAgents
+  filteredAgents,
+  ...props
 }) => {
   const [formData, setFormData] = useState<WebsiteForm>({
     assignee: '',
@@ -29,10 +30,7 @@ const Website: React.FC<WebsiteFormProps> = ({
     <div className="section formContainerCard">
       <div className="containerBody">
         <div className="cardTitle">Create Website Article</div>
-        <form
-          name="website"
-          onSubmit={handleTaskFormSubmit(formData, 'websiteContentBrief')}
-        >
+        <form name="website" onSubmit={handleTaskFormSubmit(formData, props)}>
           <div className="formFieldRow">
             <label htmlFor="assignee">Assignee</label>
             <div>
@@ -71,7 +69,7 @@ const Website: React.FC<WebsiteFormProps> = ({
           </div>
 
           <div className="formFieldRow">
-            <label htmlFor="subTopicsCSV">List of sub topics</label>
+            <label htmlFor="subTopicsCSV">Sub Topics</label>
             <div>
               <textarea
                 name="subTopicsCSV"
@@ -145,9 +143,7 @@ const Website: React.FC<WebsiteFormProps> = ({
             </div>
           </div>
           <div className="formFieldRow">
-            <label htmlFor="seoKeywordsCSV">
-              List of SEO keywords / phrases
-            </label>
+            <label htmlFor="seoKeywordsCSV">SEO keywords / phrases</label>
             <div>
               <input
                 name="seoKeywordsCSV"
