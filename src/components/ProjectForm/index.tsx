@@ -114,9 +114,9 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
                 required
               >
                 <option value="">Select Status</option>
-                <option value="completed">Completed</option>
-                <option value="delay">Delay</option>
-                <option value="pending">Pending</option>
+                <option value="Completed">Completed</option>
+                <option value="Delay">Delay</option>
+                <option value="Pending">Pending</option>
               </select>
             </div>
           </div>

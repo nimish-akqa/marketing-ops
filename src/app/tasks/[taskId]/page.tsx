@@ -14,6 +14,16 @@ import {
 import '../../projects/[projectId]/style.scss';
 import { notFound } from 'next/navigation';
 
+function plainTextToMarkdown(plainText: string) {
+  const paragraphs = plainText.split('\n');
+  const markdownParagraphs = paragraphs.map((paragraph) => {
+    return `
+
+${paragraph}
+`;
+  });
+  return markdownParagraphs.join('');
+}
 const page = async ({ params }: { params: { taskId: number } }) => {
   const { taskId } = params;
   const task: Task = await getTask(taskId);
@@ -87,7 +97,14 @@ const page = async ({ params }: { params: { taskId: number } }) => {
               {filteredDel && (
                 <div className="deliverableList">
                   {filteredDel.map((del) => (
-                    <p key={del.id}>{del.content}</p>
+                    <div
+                      key={del.id}
+                      dangerouslySetInnerHTML={{
+                        __html: plainTextToMarkdown(
+                          del.content.replace(/\n/g, '<br>')
+                        )
+                      }}
+                    ></div>
                   ))}
                 </div>
               )}

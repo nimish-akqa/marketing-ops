@@ -1,6 +1,5 @@
 import { FormEvent } from 'react';
 import { TaskFormProps } from '@/types/taskform';
-import { ProjectForm } from '@/types/global';
 
 export const handleTaskFormSubmit =
   <T>(formData: T, props: TaskFormProps) =>
@@ -50,6 +49,33 @@ export const handleProjectFormSubmit =
 
     try {
       const apiUrl = `/api/projects`;
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+      } else {
+        console.error('Error:', response.status);
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  };
+
+export const handleUserFormSubmit =
+  <T>(formData: T) =>
+  async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Data submitted from form: ', JSON.stringify(formData));
+
+    try {
+      const apiUrl = `/api/agents`;
 
       const response = await fetch(apiUrl, {
         method: 'POST',

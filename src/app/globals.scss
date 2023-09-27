@@ -86,3 +86,22 @@ a {
   border-color: #aee7d2;
   background-color: #34c38f40;
 }
+
+.blobImg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 70px;
+  padding: 10px 10px;
+  border: 2px solid #eff2f7;
+  border-radius: 6px;
+  margin-top: 5px;
+  img {
+    height: 100%;
+  }
+  .imgDetails {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+  }
+}

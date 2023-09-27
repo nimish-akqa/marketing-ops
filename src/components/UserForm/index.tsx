@@ -1,18 +1,43 @@
 'use client';
-import React, { FormEvent, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+import { UserForm } from '@/types/global';
+import { handleInputChange, handleUserFormSubmit } from '@/utils/formUtils';
 
 import { IoMdCloudUpload } from 'react-icons/io';
 
 const UserForm: React.FC = () => {
   const uploadAvatarButton = useRef<HTMLInputElement | null>(null);
+  const [avatar, setAvatar] = useState<File>();
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    // Implement your form submission logic here
-    // onSubmit();
-  };
+  const [formData, setFormData] = useState<UserForm>({
+    name: '',
+    email: '',
+    agentType: '',
+    skills: ''
+  });
 
-  const handleUploadClick = () => {
+  const [src, setSrc] = useState('');
+  useEffect(() => {
+    if (avatar) {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const imgSrc = event.target?.result as string;
+        setSrc(imgSrc);
+      };
+
+      reader.readAsDataURL(avatar);
+    }
+  }, [avatar]);
+
+  const handleUploadClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (event.target === uploadAvatarButton.current) {
+      return;
+    }
+    event.stopPropagation();
     uploadAvatarButton.current?.click();
   };
 
@@ -20,9 +45,9 @@ const UserForm: React.FC = () => {
     <div className="section formContainerCard">
       <div className="containerBody">
         <div className="cardTitle">Create New User</div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleUserFormSubmit(formData)}>
           <div className="formFieldRow">
-            <label htmlFor="avatar">Avatar</label>
+            <label>Avatar</label>
             <div>
               <div className="fileDropzone" onClick={handleUploadClick}>
                 <input
@@ -31,31 +56,57 @@ const UserForm: React.FC = () => {
                   id="avatar"
                   ref={uploadAvatarButton}
                   style={{ display: 'none' }}
+                  onChange={(e) => {
+                    setAvatar(e.target.files?.[0]);
+                  }}
                 />
                 <div className="fileUploadText">
                   <IoMdCloudUpload size={50} color="grey" />
                   <h4>Click to upload avatar</h4>
                 </div>
               </div>
+              {src && (
+                <div className="blobImg">
+                  <img src={src} />
+                  <div className="imgDetails">
+                    <span>{avatar?.name}</span>
+                    {avatar?.size && (
+                      <span>{(avatar?.size / 1000).toFixed(2)} KB</span>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           <div className="formFieldRow">
-            <label htmlFor="userName">User Name</label>
+            <label htmlFor="name">User Name</label>
             <div>
               <input
-                id="userName"
+                id="name"
+                name="name"
                 type="text"
                 placeholder="Enter User Name"
                 className="form-control"
+                value={formData.name}
+                onChange={handleInputChange(formData, setFormData)}
+                required
               />
             </div>
           </div>
           <div className="formFieldRow">
             <label htmlFor="agentType">Agent Type</label>
             <div>
-              <select name="agentType" id="agentType" className="form-control">
-                <option value="completed">Human</option>
-                <option value="delay">Bot</option>
+              <select
+                name="agentType"
+                id="agentType"
+                className="form-control"
+                value={formData.agentType}
+                onChange={handleInputChange(formData, setFormData)}
+                required
+              >
+                <option value="">Select agent type</option>
+                <option value="Human">Human</option>
+                <option value="Bot">Bot</option>
               </select>
             </div>
           </div>
@@ -64,20 +115,28 @@ const UserForm: React.FC = () => {
             <div>
               <input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="Enter Email"
                 className="form-control"
+                value={formData.email}
+                onChange={handleInputChange(formData, setFormData)}
+                required
               />
             </div>
           </div>
           <div className="formFieldRow">
-            <label htmlFor="skill">Skill List</label>
+            <label htmlFor="skill">Skill List CSV</label>
             <div>
               <input
                 id="skill"
+                name="skills"
                 type="text"
                 placeholder="Enter Skills"
                 className="form-control"
+                value={formData.skills}
+                onChange={handleInputChange(formData, setFormData)}
+                required
               />
             </div>
           </div>

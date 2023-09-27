@@ -90,3 +90,10 @@ export interface ProjectForm {
   status: string;
   team: string[];
 }
+
+export interface UserForm {
+  name: string;
+  email: string;
+  agentType: string;
+  skills: string;
+}
