@@ -9,10 +9,22 @@ import { Project, ProjectUser } from '@/types/global';
 import './projects.scss';
 import { getProjects, getProjectUsers } from '@/utils/apiUtils';
 import { convertDate } from '@/utils/globalUtils';
+import { PrismaClient } from '@prisma/client';
 
 const page = async () => {
-  const projects: Project[] = await getProjects();
-  const projectUsers: ProjectUser[] = await getProjectUsers();
+  // const projects: Project[] = await getProjects();
+  // const projectUsers: ProjectUser[] = await getProjectUsers();
+  const prisma = new PrismaClient();
+
+  const projects = await prisma.pROJECT.findMany({
+    include: {
+      ProjectAgents: {
+        include: {
+          agent: true
+        }
+      }
+    }
+  });
 
   return (
     <>
@@ -39,7 +51,7 @@ const page = async () => {
               </tr>
             </thead>
             <tbody>
-              {projects?.map((project: Project) => (
+              {projects?.map((project) => (
                 <tr key={project.id}>
                   <td>
                     <span>
@@ -66,19 +78,26 @@ const page = async () => {
                   </td>
                   <td>
                     <div className="userGroup">
-                      {projectUsers &&
-                        projectUsers
-                          ?.filter((pUser) => pUser.projectId === project.id)
-                          .map((data) => (
-                            <div className="userAvatar" key={data.agentId}>
+                      {project.ProjectAgents &&
+                        project.ProjectAgents.map((data) => (
+                          <div className="userAvatar" key={data.agent.id}>
+                            {data.agent.image !== '' ? (
                               <Image
-                                src={`https://api.multiavatar.com/${data.agentId}.svg`}
+                                src={data.agent.image!}
                                 width={32}
                                 height={32}
                                 alt="thumb"
                               />
-                            </div>
-                          ))}
+                            ) : (
+                              <Image
+                                src={`https://api.multiavatar.com/${data.agent.id}.svg`}
+                                width={32}
+                                height={32}
+                                alt="thumb"
+                              />
+                            )}
+                          </div>
+                        ))}
                     </div>
                   </td>
                   <td>

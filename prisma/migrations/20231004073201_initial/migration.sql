@@ -1,0 +1,122 @@
+-- CreateEnum
+CREATE TYPE "TYPE" AS ENUM ('HUMAN', 'BOT');
+
+-- CreateEnum
+CREATE TYPE "DELIVERABLE_TYPE" AS ENUM ('TEXT', 'IMAGE');
+
+-- CreateEnum
+CREATE TYPE "TASK_TYPE" AS ENUM ('Website', 'Twitter', 'Instagram');
+
+-- CreateTable
+CREATE TABLE "PROJECT" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "desc" TEXT NOT NULL,
+    "startDate" TIMESTAMP(3) NOT NULL,
+    "endDate" TIMESTAMP(3) NOT NULL,
+    "status" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "PROJECT_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "AGENT" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "type" "TYPE" NOT NULL DEFAULT 'HUMAN',
+    "image" TEXT NOT NULL,
+    "skills" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "AGENT_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "PERSONA" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "role" TEXT NOT NULL,
+    "problems" TEXT NOT NULL,
+    "pains" TEXT NOT NULL,
+    "jobs" TEXT NOT NULL,
+    "motivation" TEXT NOT NULL,
+    "trigger" TEXT NOT NULL,
+    "barriers" TEXT NOT NULL,
+    "context" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "PERSONA_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "TASK" (
+    "id" SERIAL NOT NULL,
+    "topic" TEXT NOT NULL,
+    "type" "TASK_TYPE" NOT NULL,
+    "agentId" INTEGER NOT NULL,
+    "status" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "projectId" INTEGER NOT NULL,
+    "deliverableId" INTEGER NOT NULL,
+
+    CONSTRAINT "TASK_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ProjectAgents" (
+    "projectId" INTEGER NOT NULL,
+    "agentId" INTEGER NOT NULL,
+    "assignedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ProjectAgents_pkey" PRIMARY KEY ("projectId","agentId")
+);
+
+-- CreateTable
+CREATE TABLE "DELIVERABLE" (
+    "id" SERIAL NOT NULL,
+    "content" TEXT NOT NULL,
+    "type" "DELIVERABLE_TYPE" NOT NULL DEFAULT 'TEXT',
+
+    CONSTRAINT "DELIVERABLE_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "_AGENTToPROJECT" (
+    "A" INTEGER NOT NULL,
+    "B" INTEGER NOT NULL
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "PROJECT_desc_key" ON "PROJECT"("desc");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "AGENT_email_key" ON "AGENT"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "_AGENTToPROJECT_AB_unique" ON "_AGENTToPROJECT"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_AGENTToPROJECT_B_index" ON "_AGENTToPROJECT"("B");
+
+-- AddForeignKey
+ALTER TABLE "TASK" ADD CONSTRAINT "TASK_agentId_fkey" FOREIGN KEY ("agentId") REFERENCES "AGENT"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "TASK" ADD CONSTRAINT "TASK_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "PROJECT"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "TASK" ADD CONSTRAINT "TASK_deliverableId_fkey" FOREIGN KEY ("deliverableId") REFERENCES "DELIVERABLE"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ProjectAgents" ADD CONSTRAINT "ProjectAgents_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "PROJECT"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ProjectAgents" ADD CONSTRAINT "ProjectAgents_agentId_fkey" FOREIGN KEY ("agentId") REFERENCES "AGENT"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_AGENTToPROJECT" ADD CONSTRAINT "_AGENTToPROJECT_A_fkey" FOREIGN KEY ("A") REFERENCES "AGENT"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_AGENTToPROJECT" ADD CONSTRAINT "_AGENTToPROJECT_B_fkey" FOREIGN KEY ("B") REFERENCES "PROJECT"("id") ON DELETE CASCADE ON UPDATE CASCADE;

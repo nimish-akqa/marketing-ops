@@ -8,10 +8,16 @@ import { Agent, ProjectUser } from '@/types/global';
 import { getAgents, getProjectUsers } from '@/utils/apiUtils';
 
 import './agents.scss';
+import { PrismaClient } from '@prisma/client';
 
 const page = async () => {
-  const agents: Agent[] = await getAgents();
-  const projectUsers: ProjectUser[] = await getProjectUsers();
+  const prisma = new PrismaClient();
+
+  const agents = await prisma.aGENT.findMany({
+    include: {
+      ProjectAgents: true
+    }
+  });
 
   return (
     <>
@@ -42,36 +48,37 @@ const page = async () => {
               {agents?.map((agent) => (
                 <tr key={agent.id}>
                   <td>
-                    <div className="userGroup">
-                      <div className="userAvatar">
+                    <div className="userAvatar">
+                      {agent.image !== '' ? (
+                        <Image
+                          src={agent.image!}
+                          width={32}
+                          height={32}
+                          alt="thumb"
+                        />
+                      ) : (
                         <Image
                           src={`https://api.multiavatar.com/${agent.id}.svg`}
                           width={32}
                           height={32}
                           alt="thumb"
                         />
-                      </div>
+                      )}
                     </div>
                   </td>
                   <td>{agent.name}</td>
-                  <td>{agent.agentType}</td>
+                  <td>{agent.type}</td>
                   <td>{agent.email}</td>
                   <td>
                     <div className="skillGroup">
-                      {agent.skills.map((skill) => (
+                      {agent.skills.split(',').map((skill) => (
                         <span className={`skills success`} key={skill}>
                           {skill}
                         </span>
                       ))}
                     </div>
                   </td>
-                  <td>
-                    {
-                      projectUsers?.filter(
-                        (pUser) => pUser.agentId === agent.id
-                      ).length
-                    }
-                  </td>
+                  <td>{agent.ProjectAgents.length}</td>
                   <td>
                     <ActionDropDown
                       class="optionsDropdown"

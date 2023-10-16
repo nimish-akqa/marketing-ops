@@ -1,3 +1,4 @@
+import { AGENT_TYPE } from '@prisma/client';
 export interface Project {
   id: number;
   name: string;
@@ -10,8 +11,10 @@ export interface Agent {
   id: number;
   name: string;
   email: string;
-  agentType: string;
-  skills: string[];
+  type: string;
+  skills: string;
+  image: string | null;
+  ProjectAgents: any;
 }
 export interface AudiencePersona {
   id: number;
@@ -94,6 +97,6 @@ export interface ProjectForm {
 export interface UserForm {
   name: string;
   email: string;
-  agentType: string;
+  type: AGENT_TYPE | string;
   skills: string;
 }

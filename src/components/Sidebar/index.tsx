@@ -61,12 +61,12 @@ const Sidebar = () => {
         <li className="menuTitle">Menu</li>
         <li className="menuContent">
           <div className="menuHeading">
-            <NavLink href={'/'}>
+            <Link href={'/'}>
               <i>
                 <BiHomeCircle size={30} />
               </i>
               <span>Dashboard</span>
-            </NavLink>
+            </Link>
           </div>
         </li>
         <li className="menuTitle">Apps</li>
@@ -79,12 +79,12 @@ const Sidebar = () => {
             className="menuHeading"
             onClick={() => handleMenuClick('projectsMenu')}
           >
-            <NavLink href={''}>
+            <div>
               <i>
                 <BiBriefcaseAlt2 size={30} />
               </i>
               <span>Projects</span>
-            </NavLink>
+            </div>
 
             <i>
               <RiArrowDownSLine size={20} className="menuArrow" />
@@ -110,12 +110,12 @@ const Sidebar = () => {
             className="menuHeading"
             onClick={() => handleMenuClick('usersMenu')}
           >
-            <NavLink href={''}>
+            <div>
               <i>
                 <BiSolidUserDetail size={30} />
               </i>
               <span>Users</span>
-            </NavLink>
+            </div>
             <i>
               <RiArrowDownSLine size={20} className="menuArrow" />
             </i>
@@ -138,12 +138,12 @@ const Sidebar = () => {
             className="menuHeading"
             onClick={() => handleMenuClick('audienceMenu')}
           >
-            <NavLink href={''}>
+            <div>
               <i>
                 <BsFillPeopleFill size={30} />
               </i>
               <span>Audience Persona</span>
-            </NavLink>
+            </div>
             <i>
               <RiArrowDownSLine size={20} className="menuArrow" />
             </i>

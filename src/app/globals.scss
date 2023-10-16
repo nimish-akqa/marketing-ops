@@ -105,3 +105,10 @@ a {
     font-size: 13px;
   }
 }
+.userAvatar {
+  display: flex;
+  img {
+    // border: 2px solid #fff;
+    border-radius: 50%;
+  }
+}

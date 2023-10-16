@@ -1,19 +1,21 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import DatePicker from 'react-datepicker';
 import { Agent, ProjectForm } from '@/types/global';
 import { handleProjectFormSubmit, handleInputChange } from '@/utils/formUtils';
 
 import 'react-datepicker/dist/react-datepicker.css';
+import { addProject } from '../../../actions/actions';
+import { AgentList } from '@/app/projects/create-project/page';
 
 interface ProjectFormProps {
-  agents: Agent[];
+  agents: AgentList[];
 }
 
 const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
-  // const [startDate, setStartDate] = useState<Date | null>(new Date());
-  // const [endDate, setEndDate] = useState<Date | null>(new Date());
+  const ref = useRef<HTMLFormElement>(null);
+
   const [formData, setFormData] = useState<ProjectForm>({
     name: '',
     desc: '',
@@ -45,7 +47,15 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
     <div className="section formContainerCard">
       <div className="containerBody">
         <div className="cardTitle">Create New Project</div>
-        <form onSubmit={handleProjectFormSubmit(formData)}>
+        <form
+          ref={ref}
+          action={async (formData) => {
+            // ref.current?.reset();
+            const res = await addProject(formData);
+            console.log(res);
+          }}
+        >
+          {/* <form onSubmit={handleProjectFormSubmit(formData)}> */}
           <div className="formFieldRow">
             <label htmlFor="name">Project Name</label>
             <div>
@@ -80,11 +90,11 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
             <label htmlFor="startDate">Start Date</label>
             <div>
               <DatePicker
+                name="startDate"
                 placeholderText={'Select start date'}
                 selected={formData.startDate}
                 onChange={(date) => handleDateChange(date, 'startDate')}
                 startDate={formData.startDate}
-                dateFormat="MM/dd/yyyy"
                 required
               />
             </div>
@@ -93,10 +103,10 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
             <label htmlFor="endDate">End Date</label>
             <div>
               <DatePicker
+                name="endDate"
                 placeholderText={'Select end date'}
                 selected={formData.endDate}
                 onChange={(date) => handleDateChange(date, 'endDate')}
-                dateFormat="MM/dd/yyyy"
                 minDate={formData.startDate}
                 required
               />
@@ -134,7 +144,8 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ agents }) => {
                 {agents &&
                   agents.map((agent) => (
                     <option value={agent.id} key={agent.id}>
-                      {agent.name}
+                      {agent.name}{' '}
+                      {agent.type === 'BOT' && <> ({agent.type})</>}
                     </option>
                   ))}
               </select>

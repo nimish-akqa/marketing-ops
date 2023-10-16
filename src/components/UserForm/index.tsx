@@ -1,21 +1,45 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 
 import { UserForm } from '@/types/global';
 import { handleInputChange, handleUserFormSubmit } from '@/utils/formUtils';
 
 import { IoMdCloudUpload } from 'react-icons/io';
+import { addAgent } from '../../../actions/actions';
 
 const UserForm: React.FC = () => {
   const uploadAvatarButton = useRef<HTMLInputElement | null>(null);
   const [avatar, setAvatar] = useState<File>();
+  const ref = useRef<HTMLFormElement>(null);
 
   const [formData, setFormData] = useState<UserForm>({
     name: '',
     email: '',
-    agentType: '',
+    type: '',
     skills: ''
   });
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const data = new FormData();
+      data.append('name', formData.name);
+      data.append('email', formData.email);
+      data.append('type', formData.type);
+      data.append('skills', formData.skills);
+      if (avatar) {
+        data.append('image', avatar);
+      }
+      const res = await fetch('/api/agents', {
+        method: 'POST',
+        body: data
+      });
+      if (!res.ok) throw new Error(await res.text());
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const [src, setSrc] = useState('');
   useEffect(() => {
@@ -45,7 +69,16 @@ const UserForm: React.FC = () => {
     <div className="section formContainerCard">
       <div className="containerBody">
         <div className="cardTitle">Create New User</div>
-        <form onSubmit={handleUserFormSubmit(formData)}>
+        <form
+          ref={ref}
+          action={async (formData) => {
+            // ref.current?.reset();
+            const res = await addAgent(formData);
+            console.log(res);
+          }}
+        >
+          {/* <form onSubmit={onSubmit}> */}
+          {/* <form onSubmit={handleUserFormSubmit(formData)}> */}
           <div className="formFieldRow">
             <label>Avatar</label>
             <div>
@@ -94,19 +127,19 @@ const UserForm: React.FC = () => {
             </div>
           </div>
           <div className="formFieldRow">
-            <label htmlFor="agentType">Agent Type</label>
+            <label htmlFor="type">Agent Type</label>
             <div>
               <select
-                name="agentType"
-                id="agentType"
+                name="type"
+                id="type"
                 className="form-control"
-                value={formData.agentType}
+                value={formData?.type}
                 onChange={handleInputChange(formData, setFormData)}
                 required
               >
                 <option value="">Select agent type</option>
-                <option value="Human">Human</option>
-                <option value="Bot">Bot</option>
+                <option value="HUMAN">Human</option>
+                <option value="BOT">Bot</option>
               </select>
             </div>
           </div>

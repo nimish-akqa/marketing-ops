@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "AGENT" ALTER COLUMN "image" DROP NOT NULL;

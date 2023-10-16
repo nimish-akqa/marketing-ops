@@ -1,0 +1,95 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model PROJECT {
+    id            Int             @id @default(autoincrement())
+    name          String
+    desc          String          @unique
+    startDate     DateTime
+    endDate       DateTime
+    status        String
+    createdAt     DateTime        @default(now())
+    TASK          TASK[]
+    ProjectAgents ProjectAgents[]
+}
+
+model AGENT {
+    id            Int             @id @default(autoincrement())
+    name          String
+    email         String          @unique
+    type          AGENT_TYPE      @default(HUMAN)
+    image         String?
+    skills        String
+    createdAt     DateTime        @default(now())
+    TASK          TASK[]
+    ProjectAgents ProjectAgents[]
+}
+
+model PERSONA {
+    id         Int      @id @default(autoincrement())
+    name       String
+    role       String
+    problems   String
+    pains      String
+    jobs       String
+    motivation String
+    trigger    String
+    barriers   String
+    context    String
+    createdAt  DateTime @default(now())
+}
+
+model TASK {
+    id          Int         @id @default(autoincrement())
+    topic       String
+    type        TASK_TYPE
+    agent       AGENT       @relation(fields: [agentId], references: [id])
+    agentId     Int
+    status      String
+    project     PROJECT     @relation(fields: [projectId], references: [id])
+    deliverable DELIVERABLE @relation(fields: [deliverableId], references: [id])
+
+    createdAt     DateTime @default(now())
+    projectId     Int
+    deliverableId Int
+}
+
+model ProjectAgents {
+    project    PROJECT  @relation(fields: [projectId], references: [id])
+    projectId  Int
+    agent      AGENT    @relation(fields: [agentId], references: [id])
+    agentId    Int
+    assignedAt DateTime @default(now())
+
+    @@id([projectId, agentId])
+}
+
+model DELIVERABLE {
+    id      Int              @id @default(autoincrement())
+    content String
+    type    DELIVERABLE_TYPE @default(TEXT)
+    TASK    TASK[]
+}
+
+enum AGENT_TYPE {
+    HUMAN
+    BOT
+}
+
+enum DELIVERABLE_TYPE {
+    TEXT
+    IMAGE
+}
+
+enum TASK_TYPE {
+    Website
+    Twitter
+    Instagram
+}
